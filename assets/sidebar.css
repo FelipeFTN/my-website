@@ -1,0 +1,23 @@
+.sidebar {
+  text-align: left;
+  justify-content: left;
+  position: fixed;
+  padding: 2rem;
+  background-color: #24292e;
+  border: 0px solid #000;
+  height: 100%;
+  width: 20%;
+  min-width: 200px;
+  top: 0;
+  left: 0;
+}
+
+.sidebar .profile {
+  text-align: center;
+  color: white;
+}
+
+.sidebar .profile img {
+  width: 150px;
+  border-radius: 50%;
+}

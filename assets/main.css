@@ -1,0 +1,18 @@
+/* FONTS */
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
+
+/* IMPORTS */
+@import url("sidebar.css");
+
+body {
+  /* Font stuff */
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+
+  /* Background */
+  background-color: #2f363d;
+
+  /* General */
+}
