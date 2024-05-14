@@ -13,6 +13,10 @@ pub fn Projects() -> Element {
                 Item{},
                 Item{},
                 Item{},
+
+                Item{},
+                Item{},
+                Item{},
             }
         }
     }

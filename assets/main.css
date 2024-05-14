@@ -29,4 +29,7 @@ main {
   flex-direction: row;
   height: 100vh;
   gap: 0;
+
+  justify-content: space-between;
+  /* align-items: center; */
 }

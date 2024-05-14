@@ -36,6 +36,7 @@ pub fn Main() -> Element {
         main {
             components::sidebar::SideBar {},
             components::projects::Projects {},
+            div { class: "div-to-align-the-layout"},
         }
     }
 }
