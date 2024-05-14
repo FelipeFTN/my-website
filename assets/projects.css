@@ -5,11 +5,18 @@
   .subtitle {
     color: #bac2de;
   }
+  .project-tags {
+    color: #bac2de;
+  }
+
+  justify-content: center;
+  align-items: center;
 
   .projects-grid {
     justify-content: center;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
     grid-gap: 1rem;
     padding: 1rem;
 
@@ -31,6 +38,17 @@
         display: flex;
         gap: 0.5rem;
         margin-top: 1rem;
+        a {
+          /* Optional decoration */
+          /* color: #bac2de; */
+          /* text-decoration: none; */
+          /* padding: 0.5rem; */
+          /* border-radius: 5px; */
+          /* background-color: #1e1e2e; */
+          /* transition: all 0.3s ease; */
+          /* text-decoration: none; */
+          color: #cba6f7;
+        }
       }
 
       &:hover {
@@ -38,8 +56,5 @@
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
       }
     }
-  }
-  .project-tags {
-    color: #bac2de;
   }
 }

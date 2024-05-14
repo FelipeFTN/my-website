@@ -11,6 +11,8 @@ pub fn Projects() -> Element {
             div { class: "projects-grid",
                 // Here, we will do a for loop to render the projects
                 Item{},
+                Item{},
+                Item{},
             }
         }
     }
@@ -22,7 +24,7 @@ fn Item() -> Element {
             h1 { "Project Title" },
             p { "Project Description" },
             div { class: "project-tags",
-                a { class: "repo-language", href: "#", "Tag 1"
+                a { class: "repo-language", href: "#",
                     span { class: "repo-language-color", "*" },
                     span { class: "repo-language-text", "Language" },
                 },
