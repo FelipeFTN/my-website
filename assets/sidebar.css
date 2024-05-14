@@ -1,20 +1,20 @@
 .sidebar {
   text-align: left;
   justify-content: left;
-  position: fixed;
-  padding: 2rem;
-  background-color: #24292e;
-  border: 0px solid #000;
-  height: 100%;
-  width: 20%;
+  background-color: #181825;
+  border: 0px solid #181825;
   min-width: 200px;
+  height: 100vh;
   top: 0;
   left: 0;
+  margin: 0;
+  flex: 0 1 25%;
+  padding: 1rem;
 }
 
 .sidebar .profile {
   text-align: center;
-  color: white;
+  color: #cdd6f4;
 }
 
 .sidebar .profile img {

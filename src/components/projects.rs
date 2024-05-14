@@ -6,8 +6,8 @@ use dioxus::prelude::*;
 pub fn Projects() -> Element {
     rsx! {
         div { class: "projects",
-            h1 { "Projects" },
-            p { "GitHub repositories I've built."}
+            h1 { class: "title", "Projects" },
+            p { class: "subtitle", "GitHub repositories I've built."}
             div { class: "projects-grid",
                 // Here, we will do a for loop to render the projects
                 Item{},
@@ -26,7 +26,6 @@ fn Item() -> Element {
                     span { class: "repo-language-color", "*" },
                     span { class: "repo-language-text", "Language" },
                 },
-                // another <a> with stars and another for forks
                 a { class: "repo-stars", href: "#",
                     span { class: "repo-stars-icon", "*" },
                     span { class: "repo-stars-text", "Stars" },

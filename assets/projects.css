@@ -1,0 +1,45 @@
+.projects {
+  .title {
+    color: #cdd6f4;
+  }
+  .subtitle {
+    color: #bac2de;
+  }
+
+  .projects-grid {
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 1rem;
+    padding: 1rem;
+
+    .project-item {
+      background-color: #181825;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+
+      h1 {
+        color: #a6adc8;
+      }
+      p {
+        color: #7f849c;
+      }
+
+      .project-tags {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+  .project-tags {
+    color: #bac2de;
+  }
+}
