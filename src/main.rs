@@ -3,6 +3,8 @@
 use dioxus::prelude::*;
 use tracing::Level;
 
+mod components;
+
 #[derive(Clone, Routable, Debug, PartialEq)]
 enum Route {
     #[route("/")]
@@ -24,19 +26,16 @@ fn App() -> Element {
 #[component]
 fn Home() -> Element {
     rsx! {
-        SideBar {},
+        Main {},
     }
 }
 
 #[component]
-fn SideBar() -> Element {
+pub fn Main() -> Element {
     rsx! {
-        div { class: "sidebar",
-            div { class: "profile",
-                img { src: "https://avatars.githubusercontent.com/u/80127749?v=4", alt: "Profile Picture"},
-                h1 { "Felipe Tenório" },
-                p { "Software Developer" },
-            }
+        main {
+            components::sidebar::SideBar {},
+            components::projects::Projects {},
         }
     }
 }
