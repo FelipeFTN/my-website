@@ -2,8 +2,13 @@
 
 use dioxus::prelude::*;
 use tracing::Level;
+use once_cell::sync::Lazy;
 
 mod components;
+mod config;
+
+// Define a global variable to store the configuration
+static CONFIG: Lazy<config::config::AppConfig> = Lazy::new(|| config::config::AppConfig::new());
 
 #[derive(Clone, Routable, Debug, PartialEq)]
 enum Route {
@@ -32,6 +37,11 @@ fn Home() -> Element {
 
 #[component]
 pub fn Main() -> Element {
+    // Access the configuration from the global variable
+    // let config = CONFIG.clone();
+    // or
+    // CONFIG.get("key")
+
     rsx! {
         main {
             components::sidebar::SideBar {},
