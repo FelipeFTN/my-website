@@ -1,2 +1,2 @@
-// Module for config
-pub mod config;
+// Configuration Module
+pub mod environment;
