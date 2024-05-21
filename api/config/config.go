@@ -8,6 +8,9 @@ type Config struct {
 		Port string `mapstructure:"port"`
 		Mode string `mapstructure:"mode"`
 	} `mapstructure:"server"`
+	Github struct {
+		Username string `mapstructure:"username"`
+	} `mapstructure:"github"`
 }
 
 // Get config
