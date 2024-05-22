@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"fmt"
+
 	"github.com/gin-gonic/gin"
 
 	"github.com/FelipeFTN/my-website/config"
@@ -24,6 +26,7 @@ func (self *Website) MyRepositories(c *gin.Context) {
 
 	repos, err := self.svc.MyRepositories(ctx)
 	if err != nil {
+		fmt.Println(err)
 		c.JSON(503, gin.H{
 			"message": "Error fetching repositories",
 			"error":   err.Error(),

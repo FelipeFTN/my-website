@@ -1,6 +1,8 @@
 #![allow(non_snake_case)]
 // #![allow(dead_code)]
 
+use dioxus::prelude::*;
+
 use serde::{Deserialize, Serialize};
 use serde_json::{Result, Value};
 use dioxus_logger::tracing::{Level, info, error};
@@ -10,12 +12,20 @@ use dioxus_logger::tracing::{Level, info, error};
 const API_HOST: &str = "http://127.0.0.1";
 const API_PORT: &str = "8081";
 
-#[derive(Serialize, Deserialize)]
+#[derive(Props, Clone, PartialEq, Serialize, Deserialize)]
 pub struct MyRepositories {
-    pub Name: String,
-    pub Description: String,
-    pub StargazersCount: i16, // I could use 8 bytes integer size
-    pub ForksCount: i16,      // But the max size is 127, who knows I get big...
+    pub message: String,
+    pub status: bool,
+    pub data: Vec<MyRepositoriesData>,
+}
+
+#[derive(Props, Clone, PartialEq, Serialize, Deserialize)]
+pub struct MyRepositoriesData {
+    pub name: String,
+    pub description: String,
+    pub stargazers_count: i16, // I could use 8 bytes integer size
+    pub forks_count: i16,      // But the max size is 127, who knows I get big...
+
 }
 
 pub async fn get_my_repositories() -> Result<Vec<MyRepositories>> {

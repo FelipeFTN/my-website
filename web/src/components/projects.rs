@@ -3,15 +3,29 @@
 use dioxus::prelude::*;
 use dioxus_logger::tracing::{Level, info, error};
 
-use crate::integrations::my_api::{MyRepositories, get_my_repositories};
+use crate::integrations::my_api::{MyRepositories, MyRepositoriesData, get_my_repositories};
 
 const API_HOST: &str = "http://127.0.0.1";
 const API_PORT: &str = "8081";
 
+#[derive(Props, Clone, PartialEq)]
+struct ItemProps {
+    repo: MyRepositoriesData,
+}
+
 #[component]
 pub fn Projects() -> Element {
 
-    let mut repositories = use_signal(|| String::from("Loading..."));
+    let mut repositories = use_signal(|| vec![]);
+    //     let repositories = vec![
+    //     MyRepositories {
+    //         Name: "dioxus".to_string(),
+    //         Description: "A Rust web framework".to_string(),
+    //         StargazersCount: 1000,
+    //         ForksCount: 100,
+    //     },
+    //     // Add more repositories as needed
+    // ];
 
     let fut = move |_| {
         spawn(async move {
@@ -23,36 +37,34 @@ pub fn Projects() -> Element {
                 .expect("failed to get my repositories response");
 
             info!(data);
-            repositories.set("Hello, World!".to_string());
+            let resp: MyRepositories = serde_json::from_str(&data)
+                .expect("failed to Deserialize my repositories response");
 
-            // let resp: Vec<MyRepositories> = serde_json::from_str(&data)
-            //     .expect("failed to Deserialize my repositories response");
+            repositories.set(resp.data);
         });
     };
 
     rsx! {
         div { class: "projects",
-            button { onclick: fut, "{repositories}" },
             h1 { class: "title", "Projects" },
-            p { class: "subtitle", "GitHub repositories I've built."}
+            p { class: "subtitle", "GitHub repositories I've built."},
             div { class: "projects-grid",
-                Item {},
-                Item {},
-                Item {},
-                Item {},
-                Item {},
-                Item {},
-                Item {},
-            }
+                {fut("Fetch Repositories")},
+                {
+                    repositories.iter().map(|repo| rsx!{
+                        Item { repo: repo.clone() }
+                    }).collect::<Vec<_>>().into_iter()  // Collect the iterator to a vector
+                },
+            },
         }
     }
 }
 
-fn Item(/* repo: MyRepositories */) -> Element {
+fn Item(props: ItemProps) -> Element {
     rsx! {
         div { class: "project-item",
-            h1 { "Project Title" },
-            p { "Project Description" },
+            h1 { "{props.repo.name}" },
+            p { "{props.repo.description}" },
             div { class: "project-tags",
                 a { class: "repo-language", href: "#",
                     span { class: "repo-language-color", "*" },

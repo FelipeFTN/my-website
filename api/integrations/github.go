@@ -33,7 +33,7 @@ func (self *Github) ListRepositories(ctx context.Context) ([]RepositoryResponse,
 	}
 
 	req.Header.Set("Accept", "application/vnd.github.v3+json")
-	// req.Header.Set("User-Agent", "Username")
+	req.Header.Set("User-Agent", "FelipeFTN")
 	// Add your authentication token if required
 
 	client := &http.Client{}
