@@ -39,17 +39,11 @@ fn Home() -> Element {
 
 #[component]
 pub fn Main() -> Element {
-    let click = move |_| {
-        spawn(async move {
-            let _ = integrations::api::get_my_repositories().await;
-        });
-    };
-
     rsx! {
         main {
             components::sidebar::SideBar {},
             components::projects::Projects {},
-            div {  onclick: click, class: "div-to-align-the-layout", "HEEEEELLLOOOOO WORLLLD" },
+            div {  class: "div-to-align-the-layout" },
         }
     }
 }

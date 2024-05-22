@@ -12,10 +12,10 @@ const API_PORT: &str = "8081";
 
 #[derive(Serialize, Deserialize)]
 pub struct MyRepositories {
-    Name: String,
-    Description: String,
-    StargazersCount: i16, // I could use 8 bytes integer size
-    ForksCount: i16,      // But the max size is 127, who knows I get big...
+    pub Name: String,
+    pub Description: String,
+    pub StargazersCount: i16, // I could use 8 bytes integer size
+    pub ForksCount: i16,      // But the max size is 127, who knows I get big...
 }
 
 pub async fn get_my_repositories() -> Result<Vec<MyRepositories>> {
