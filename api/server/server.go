@@ -10,6 +10,7 @@ import (
 
 func Run(cfg *config.Config, ctrl *controllers.Controller) {
 	// Set server mode
+	// debug | release | test
 	gin.SetMode(cfg.Server.Mode)
 
 	// Initiate server

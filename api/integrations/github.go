@@ -7,24 +7,23 @@ import (
 	"net/http"
 
 	"github.com/FelipeFTN/my-website/config"
+	"github.com/FelipeFTN/my-website/mocks"
+	"github.com/FelipeFTN/my-website/models"
 )
 
 type Github struct {
 	cfg *config.Config
 }
 
-type RepositoryResponse struct {
-	Name            string `json:"name"`
-	Description     string `json:"description"`
-	StargazersCount int    `json:"stargazers_count"`
-	ForksCount      int    `json:"forks_count"`
-}
-
 func NewGithub(cfg *config.Config) *Github {
 	return &Github{cfg: cfg}
 }
 
-func (self *Github) ListRepositories(ctx context.Context) ([]RepositoryResponse, error) {
+func (self *Github) ListRepositories(ctx context.Context) ([]models.RepositoryResponse, error) {
+	if self.cfg.Server.Environment == "development" {
+		return mocks.ListRepositories(), nil
+	}
+
 	url := fmt.Sprintf("https://api.github.com/users/%s/repos", self.cfg.Github.Username)
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -33,8 +32,9 @@ func (self *Github) ListRepositories(ctx context.Context) ([]RepositoryResponse,
 	}
 
 	req.Header.Set("Accept", "application/vnd.github.v3+json")
+	req.Header.Set("X-GitHub-Api-Version", "2022-11-28")
 	req.Header.Set("User-Agent", "FelipeFTN")
-	// Add your authentication token if required
+	req.Header.Set("Authorization", self.cfg.Github.Token)
 
 	client := &http.Client{}
 	resp, err := client.Do(req)
@@ -47,7 +47,7 @@ func (self *Github) ListRepositories(ctx context.Context) ([]RepositoryResponse,
 		return nil, fmt.Errorf("API request failed with status code %d", resp.StatusCode)
 	}
 
-	var repos []RepositoryResponse
+	var repos []models.RepositoryResponse
 	if err := json.NewDecoder(resp.Body).Decode(&repos); err != nil {
 		return nil, err
 	}

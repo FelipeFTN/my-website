@@ -5,11 +5,13 @@ import "github.com/spf13/viper"
 // Config struct
 type Config struct {
 	Server struct {
-		Port string `mapstructure:"port"`
-		Mode string `mapstructure:"mode"`
+		Environment string `mapstructure:"environment"`
+		Port        string `mapstructure:"port"`
+		Mode        string `mapstructure:"mode"`
 	} `mapstructure:"server"`
 	Github struct {
 		Username string `mapstructure:"username"`
+		Token    string `mapstructure:"token"`
 	} `mapstructure:"github"`
 }
 

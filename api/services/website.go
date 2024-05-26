@@ -5,6 +5,7 @@ import (
 
 	"github.com/FelipeFTN/my-website/config"
 	"github.com/FelipeFTN/my-website/integrations"
+	"github.com/FelipeFTN/my-website/models"
 )
 
 type Website struct {
@@ -19,8 +20,7 @@ func NewWebsite(cfg *config.Config, intgr *integrations.Integration) *Website {
 	}
 }
 
-// TODO: Change the response type later for a specific struct
-func (self *Website) MyRepositories(ctx context.Context) (repos []integrations.RepositoryResponse, err error) {
+func (self *Website) MyRepositories(ctx context.Context) (repos []models.RepositoryResponse, err error) {
 	repos, err = self.intgr.Github.ListRepositories(ctx)
 	if err != nil {
 		return repos, err

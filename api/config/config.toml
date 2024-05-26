@@ -1,5 +1,7 @@
 [server]
-host="http://127.0.0.1"
+environment="development"
+mode="debug"
 port="8081"
 [github]
 username="FelipeFTN"
+token="secret_github_token"

@@ -25,21 +25,18 @@ pub struct MyRepositoriesData {
     pub description: String,
     pub stargazers_count: i16, // I could use 8 bytes integer size
     pub forks_count: i16,      // But the max size is 127, who knows I get big...
-
 }
 
-pub async fn get_my_repositories() -> Result<Vec<MyRepositories>> {
-    let data = reqwest::get(format!("{:?}:{:?}", API_HOST, API_PORT))
+pub async fn get_my_repositories() -> Result<MyRepositories> {
+    let data = reqwest::get("http://localhost:8081/v1/my_repositories")
         .await
         .expect("failed to reach MyAPI")
         .text()
         .await
         .expect("failed to get my repositories response");
         
-
     info!(data);
-
-    let resp: Vec<MyRepositories> = serde_json::from_str(&data)
+    let resp: MyRepositories = serde_json::from_str(&data)
         .expect("failed to Deserialize my repositories response");
 
     Ok(resp)
