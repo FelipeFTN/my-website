@@ -1,5 +1,5 @@
 .sidebar {
-  justify-content: left;
+  position: fixed;
   background-color: #181825;
   border: 0px solid #181825;
   min-width: 330px;
@@ -42,15 +42,33 @@
     }
     .social-links {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       margin-top: 1rem;
+      bottom: 0;
       a {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
         color: #cdd6f4;
         font-size: 1rem;
-        img {
+        margin-bottom: 0.5rem;
+
+        span {
+          margin-left: 0.5rem;
+        }
+        #github {
           border-radius: 50%;
           width: 20px;
           background-color: white;
+        }
+        #email {
+          background-color: white;
+          -webkit-mask: url(email.svg) no-repeat center;
+          mask: url(email.svg) no-repeat center;
+          mask-size: 20px;
+          width: 20px;
+          height: 20px;
+          border-radius: 10%;
         }
       }
     }

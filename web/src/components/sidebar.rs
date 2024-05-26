@@ -13,11 +13,14 @@ pub fn SideBar() -> Element {
                 h1 { "Felipe Tenório" },
                 p { "Software Developer" },
                 div { class: "social-links", 
-                    // I really need to align this shit better later.
                     a { href: "https://github.com/FelipeFTN", 
-                        img { src: "github.svg", alt: "Github" }
+                        img { src: "github.svg", alt: "Github", id: "github" }
                         span { "@FelipeFTN" }
                     },
+                    a { href: "mailto:FelipeFTN@protonmail.com",
+                        div { id: "email" }
+                        span { "FelipeFTN@protonmail.com" }
+                    }
                 }
             }
         }
