@@ -1,5 +1,4 @@
 .sidebar {
-  text-align: left;
   justify-content: left;
   background-color: #181825;
   border: 0px solid #181825;
@@ -11,15 +10,59 @@
   margin: 0;
   flex: 0 1 25%;
   padding: 1rem;
-}
 
-.sidebar .profile {
-  padding-top: 2rem;
-  text-align: center;
-  color: #cdd6f4;
-}
+  h1 {
+    color: #cdd6f4;
+    margin-bottom: 0;
+  }
+  p {
+    color: #cdd6f4;
+    margin-top: 0.5rem;
+  }
 
-.sidebar .profile img {
-  width: 150px;
-  border-radius: 50%;
+  .profile {
+    padding-top: 2rem;
+    text-align: center;
+    color: #cdd6f4;
+
+    .profile-frame {
+      margin-left: auto;
+      margin-right: auto;
+      align-items: center;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 2px dashed #cdd6f4;
+      animation: spin 20s linear infinite;
+      img {
+        width: 150px;
+        border-radius: 50%;
+        animation: counterspin 20s linear infinite;
+      }
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      a {
+        color: #cdd6f4;
+        font-size: 1rem;
+        img {
+          border-radius: 50%;
+          width: 20px;
+          background-color: white;
+        }
+      }
+    }
+  }
+}
+@keyframes spin {
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+@keyframes counterspin {
+  100% {
+    transform: rotateZ(-360deg);
+  }
 }

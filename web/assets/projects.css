@@ -18,22 +18,33 @@
 
     .project-item {
       h1 {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         color: #a6adc8;
       }
       p {
+        margin: 0;
         color: #7f849c;
       }
 
       background-color: #181825;
       border-radius: 10px;
-      padding: 1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
+      width: 250px;
+      min-height: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 100%;
 
       .project-tags {
-        display: flex;
         gap: 0.5rem;
         margin-top: 1rem;
+        margin-bottom: 1rem;
+        bottom: 0;
         a {
           /* Optional decoration */
           /* color: #bac2de; */
