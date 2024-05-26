@@ -7,7 +7,6 @@ import (
 	"net/http"
 
 	"github.com/FelipeFTN/my-website/config"
-	"github.com/FelipeFTN/my-website/mocks"
 	"github.com/FelipeFTN/my-website/models"
 )
 
@@ -20,10 +19,6 @@ func NewGithub(cfg *config.Config) *Github {
 }
 
 func (self *Github) ListRepositories(ctx context.Context) ([]models.RepositoryResponse, error) {
-	if self.cfg.Server.Environment == "development" {
-		return mocks.ListRepositories(), nil
-	}
-
 	url := fmt.Sprintf("https://api.github.com/users/%s/repos", self.cfg.Github.Username)
 
 	req, err := http.NewRequest("GET", url, nil)
