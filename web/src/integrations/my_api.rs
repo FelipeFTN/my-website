@@ -12,6 +12,7 @@ use dioxus_logger::tracing::{Level, info, error};
 const API_HOST: &str = "http://127.0.0.1";
 const API_PORT: &str = "8081";
 
+// I really should put this into some entities place
 #[derive(Props, Clone, PartialEq, Serialize, Deserialize)]
 pub struct MyRepositories {
     pub message: String,
@@ -28,16 +29,37 @@ pub struct MyRepositoriesData {
 }
 
 pub async fn get_my_repositories() -> Result<MyRepositories> {
-    let data = reqwest::get("http://localhost:8081/v1/my_repositories")
+    let response = reqwest::get("http://localhost:8081/v1/my_repositories")
         .await
         .expect("failed to reach MyAPI")
         .text()
-        .await
-        .expect("failed to get my repositories response");
+        .await;
+
+    let data = match response {
+        Ok(resp) => resp,
+        Err(_) => String::from("Failed to get response"),
+    };
         
     info!(data);
-    let resp: MyRepositories = serde_json::from_str(&data)
-        .expect("failed to Deserialize my repositories response");
+    let resp: MyRepositories = serde_json::from_str(&data)?; // propagating error with ? operator
+
+    Ok(resp)
+}
+
+pub async fn get_contributed_repositories() -> Result<MyRepositories> {
+    let response = reqwest::get("http://localhost:8081/v1/contributed_repositories")
+        .await
+        .expect("failed to reach MyAPI")
+        .text()
+        .await;
+
+    let data = match response {
+        Ok(resp) => resp,
+        Err(_) => String::from("Failed to get response"),
+    };
+
+    info!(data);
+    let resp: MyRepositories = serde_json::from_str(&data)?; // propagating error with ? operator
 
     Ok(resp)
 }
