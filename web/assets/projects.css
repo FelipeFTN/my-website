@@ -44,7 +44,8 @@
         gap: 0.5rem;
         margin-top: 1rem;
         margin-bottom: 1rem;
-        bottom: 0;
+        display: flex;
+        flex-direction: row;
         a {
           /* Optional decoration */
           /* color: #bac2de; */
@@ -55,6 +56,63 @@
           /* transition: all 0.3s ease; */
           /* text-decoration: none; */
           color: #cba6f7;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          .repo-language-color {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            background-color: #cba6f7;
+          }
+
+          .Rust {
+            background-color: #dea584;
+          }
+          .C {
+            background-color: #555555;
+          }
+          .CPlusPlus {
+            background-color: #f34b7d;
+          }
+          .Go {
+            background-color: #00add8;
+          }
+          .Assembly {
+            background-color: #6e4c13;
+          }
+          .Java {
+            background-color: #b07219;
+          }
+          .JavaScript {
+            background-color: #f7df1e;
+          }
+          .TypeScript {
+            background-color: #2b7489;
+          }
+          .Python {
+            background-color: #3572a5;
+          }
+          .Ruby {
+            background-color: #701516;
+          }
+          .Lua {
+            background-color: #000080;
+          }
+          .Shell {
+            background-color: #89e051;
+          }
+          .HTML {
+            background-color: #e34c26;
+          }
+          .CSS {
+            background-color: #563d7c;
+          }
+          .Clojure {
+            background-color: #db5855;
+          }
         }
       }
 

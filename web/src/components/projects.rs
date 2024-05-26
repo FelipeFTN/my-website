@@ -30,6 +30,7 @@ pub fn Projects() -> Element {
                                 description: "Failed to get my repositories".to_string(),
                                 stargazers_count: 0,
                                 forks_count: 0,
+                                language: "NoLanguage".to_string(),
                             }
                         ],
                     }
@@ -57,6 +58,7 @@ pub fn Projects() -> Element {
                                 description: "Failed to get contributed repositories".to_string(),
                                 stargazers_count: 0,
                                 forks_count: 0,
+                                language: "NoLanguage".to_string(),
                             }
                         ],
                     }
@@ -99,16 +101,16 @@ fn Item(props: ItemProps) -> Element {
             p { "{props.repo.description}" },
             div { class: "project-tags",
                 a { class: "repo-language", href: "#",
-                    span { class: "repo-language-color", "*" },
-                    span { class: "repo-language-text", "Language" },
+                    div { class: "repo-language-color {props.repo.language.to_string().replace(\"+\", \"Plus\")}", "" },
+                    span { class: "repo-language-text", "{props.repo.language.to_string()}" },
                 },
                 a { class: "repo-stars", href: "#",
-                    span { class: "repo-stars-icon", "*" },
-                    span { class: "repo-stars-text", "Stars" },
+                    div { class: "repo-stars-icon", "" },
+                    span { class: "repo-stars-text", "{props.repo.stargazers_count.to_string()}" },
                 },
                 a { class: "repo-forks", href: "#",
-                    span { class: "repo-forks-icon", "*" },
-                    span { class: "repo-forks-text", "Forks" },
+                    div { class: "repo-forks-icon", "" },
+                    span { class: "repo-forks-text", "{props.repo.forks_count.to_string()}" },
                 },
             }
         }
