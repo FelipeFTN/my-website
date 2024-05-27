@@ -1,7 +1,9 @@
 [server]
-environment="development"
+environment="production"
 mode="debug"
 port="8081"
 [github]
 username="FelipeFTN"
 token="secret_github_token"
+[cache]
+ttl="5h"

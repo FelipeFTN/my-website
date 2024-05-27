@@ -13,6 +13,9 @@ type Config struct {
 		Username string `mapstructure:"username"`
 		Token    string `mapstructure:"token"`
 	} `mapstructure:"github"`
+	Cache struct {
+		TTL string `mapstructure:"ttl"`
+	} `mapstructure:"cache"`
 }
 
 // Get config
