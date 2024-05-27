@@ -68,23 +68,23 @@ pub fn Projects() -> Element {
 
     rsx! {
         div { class: "projects",
-            h1 { class: "title", "Projects" },
-            p { class: "subtitle", "GitHub repositories I've built."},
+            h1 { class: "title", "Projects" }
+            p { class: "subtitle", "GitHub repositories I've built."}
             div { class: "projects-grid",
                 {
                     repositories.iter().map(|repo| rsx!{
                         Item { repo: repo.clone() }
                     }).collect::<Vec<_>>().into_iter()  // Collect the iterator to a vector
-                },
-            },
-            p { class: "subtitle", "Projects I collaborated on."},
+                }
+            }
+            p { class: "subtitle", "Projects I collaborated on."}
             div { class: "projects-grid",
                 {
                     contr_repositories.iter().map(|repo| rsx!{
                         Item { repo: repo.clone() }
                     }).collect::<Vec<_>>().into_iter()  // Collect the iterator to a vector
-                },
-            },
+                }
+            }
         }
     }
 }
@@ -93,21 +93,21 @@ pub fn Projects() -> Element {
 fn Item(repo: MyRepositoriesData) -> Element {
     rsx! {
         div { class: "project-item",
-            h1 { "{repo.name}" },
-            p { "{repo.description}" },
+            h1 { "{repo.name}" }
+            p { "{repo.description}" }
             div { class: "project-tags",
                 a { class: "repo-language", href: "#",
-                    div { class: "repo-language-color {repo.language.to_string().replace(\"+\", \"Plus\")}", "" },
-                    span { class: "repo-language-text", "{repo.language.to_string()}" },
-                },
+                    div { class: "repo-language-color {repo.language.to_string().replace(\"+\", \"Plus\")}", "" }
+                    span { class: "repo-language-text", "{repo.language.to_string()}" }
+                }
                 a { class: "repo-stars", href: "#",
-                    div { class: "repo-stars-icon", "" },
-                    span { class: "repo-stars-text", "{repo.stargazers_count.to_string()}" },
-                },
+                    div { class: "repo-stars-icon", "" }
+                    span { class: "repo-stars-text", "{repo.stargazers_count.to_string()}" }
+                }
                 a { class: "repo-forks", href: "#",
-                    div { class: "repo-forks-icon", "" },
-                    span { class: "repo-forks-text", "{repo.forks_count.to_string()}" },
-                },
+                    div { class: "repo-forks-icon", "" }
+                    span { class: "repo-forks-text", "{repo.forks_count.to_string()}" }
+                }
             }
         }
     }

@@ -41,10 +41,14 @@ fn Home() -> Element {
 pub fn Main() -> Element {
     rsx! {
         main {
-            div { min_width: "330px", max_width: "400px" },
-            components::sidebar::SideBar {},
-            components::projects::Projects {},
-            div {  class: "div-to-align-the-layout" },
+            div { min_width: "330px", max_width: "400px" }
+            components::sidebar::SideBar {}
+            div { class: "main-content",
+                components::projects::Projects {},
+                components::blog::Blog {},
+                components::books::Books {},
+            }
+            div {  class: "div-to-align-the-layout" }
         }
     }
 }

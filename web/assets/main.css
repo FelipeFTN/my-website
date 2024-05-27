@@ -5,6 +5,8 @@
 /* IMPORTS */
 @import url("sidebar.css");
 @import url("projects.css");
+@import url("blog.css");
+@import url("books.css");
 
 body {
   /* Font stuff */
