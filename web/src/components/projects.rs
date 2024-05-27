@@ -5,11 +5,6 @@ use dioxus_logger::tracing::{Level, info, error};
 
 use crate::integrations::my_api::{*};
 
-#[derive(Props, Clone, PartialEq)]
-struct ItemProps {
-    repo: MyRepositoriesData,
-}
-
 #[component]
 pub fn Projects() -> Element {
     let mut repositories = use_signal(|| vec![]);
@@ -94,23 +89,24 @@ pub fn Projects() -> Element {
     }
 }
 
-fn Item(props: ItemProps) -> Element {
+#[component]
+fn Item(repo: MyRepositoriesData) -> Element {
     rsx! {
         div { class: "project-item",
-            h1 { "{props.repo.name}" },
-            p { "{props.repo.description}" },
+            h1 { "{repo.name}" },
+            p { "{repo.description}" },
             div { class: "project-tags",
                 a { class: "repo-language", href: "#",
-                    div { class: "repo-language-color {props.repo.language.to_string().replace(\"+\", \"Plus\")}", "" },
-                    span { class: "repo-language-text", "{props.repo.language.to_string()}" },
+                    div { class: "repo-language-color {repo.language.to_string().replace(\"+\", \"Plus\")}", "" },
+                    span { class: "repo-language-text", "{repo.language.to_string()}" },
                 },
                 a { class: "repo-stars", href: "#",
                     div { class: "repo-stars-icon", "" },
-                    span { class: "repo-stars-text", "{props.repo.stargazers_count.to_string()}" },
+                    span { class: "repo-stars-text", "{repo.stargazers_count.to_string()}" },
                 },
                 a { class: "repo-forks", href: "#",
                     div { class: "repo-forks-icon", "" },
-                    span { class: "repo-forks-text", "{props.repo.forks_count.to_string()}" },
+                    span { class: "repo-forks-text", "{repo.forks_count.to_string()}" },
                 },
             }
         }
