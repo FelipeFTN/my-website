@@ -38,6 +38,7 @@ func Routes(server *gin.Engine, ctrl *controllers.Controller) {
 
 		// Main Routes
 		v1.GET("/my_repositories", ctrl.Website.MyRepositories)
+		v1.GET("/contributed_repositories", ctrl.Website.CollabRepositories)
 	}
 }
 

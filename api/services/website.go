@@ -58,6 +58,10 @@ func (self *Website) MyRepositories(ctx context.Context) (repos []models.Reposit
 	return repos, nil
 }
 
+func (self *Website) CollabRepositories(ctx context.Context) (repos []models.RepositoryResponse, err error) {
+	return mocks.ListCollabRepositories(), nil
+}
+
 // This function removes the element at index i from slice
 // In this case, it will remove repositories
 func remove(slice []models.RepositoryResponse, s int) []models.RepositoryResponse {

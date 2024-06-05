@@ -6,4 +6,5 @@ type RepositoryResponse struct {
 	StargazersCount int    `json:"stargazers_count"`
 	ForksCount      int    `json:"forks_count"`
 	Language        string `json:"language"`
+	URL             string `json:"html_url"`
 }
