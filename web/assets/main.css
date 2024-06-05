@@ -8,6 +8,8 @@
 @import url("blog.css");
 @import url("books.css");
 
+/* GENERAL */
+/* NOTE: The website responsivity is trash. I have to fix it later! */
 body {
   /* Font stuff */
   /* font-family: "Source Sans 3", sans-serif; */
