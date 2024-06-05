@@ -7,12 +7,13 @@
 @import url("projects.css");
 @import url("blog.css");
 @import url("books.css");
+@import url("games.css");
 
 /* GENERAL */
 /* NOTE: The website responsivity is trash. I have to fix it later! */
 body {
   /* Font stuff */
-  /* font-family: "Source Sans 3", sans-serif; */
+  font-family: "Source Sans 3", sans-serif;
   font-family: "Ubuntu Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;

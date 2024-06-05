@@ -1,5 +1,5 @@
 .sidebar {
-  position: fixed;
+  position: sticky;
   background-color: #181825;
   border: 0px solid #181825;
   min-width: 330px;

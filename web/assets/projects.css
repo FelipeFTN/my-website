@@ -28,13 +28,14 @@
         color: #7f849c;
       }
 
+      font-size: 85%;
       background-color: #181825;
       border-radius: 10px;
       padding-left: 1rem;
       padding-right: 1rem;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
-      width: 300px;
+      width: 250px;
       min-height: 150px;
       overflow: hidden;
       text-overflow: ellipsis;

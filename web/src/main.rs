@@ -42,12 +42,13 @@ pub fn Main() -> Element {
     rsx! {
         main {
             // I hate using hard-coded values like this!
-            div { min_width: "330px", max_width: "400px" }
+            // div { min_width: "330px", max_width: "400px" }
             components::sidebar::SideBar {}
             div { class: "main-content",
                 components::projects::Projects {},
                 components::blog::Blog {},
                 components::books::Books {},
+                components::games::Games {},
             }
             div {  class: "div-to-align-the-layout" }
         }
