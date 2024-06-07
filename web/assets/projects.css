@@ -12,9 +12,11 @@
   .projects-grid {
     justify-content: center;
     display: grid;
-    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    width: 50vw;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 250px));
     grid-gap: 1rem;
     padding: 1rem;
+    /* align-items: flex-start; */
 
     .project-item {
       h1 {
@@ -28,6 +30,8 @@
         color: #7f849c;
       }
 
+      grid-template-rows: auto;
+      grid-template-columns: auto;
       font-size: 85%;
       background-color: #181825;
       border-radius: 10px;
