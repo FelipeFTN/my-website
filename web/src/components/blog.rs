@@ -8,6 +8,9 @@ pub fn Blog() -> Element {
         div { class: "blog",
             h1 { class: "title", "Blog" }
             p { class: "subtitle", "Here I post some of my thoughts..." }
+            div { class: "not-found",
+                h1 { "I will be working on this section soon! ;)" }
+            }
         }
     }
 }
