@@ -12,6 +12,7 @@ fn get_games() -> Vec<Game> {
         Game {
             title: "Bioshock".to_string(),
             cover: "games/bioshock.png".to_string(),
+            
         },
         Game {
             title: "Age of Empires II".to_string(),
@@ -26,8 +27,8 @@ fn get_games() -> Vec<Game> {
             cover: "games/portal.png".to_string(),
         },
         Game {
-            title: "Warcraft III".to_string(),
-            cover: "games/warcraft_iii.png".to_string(),
+            title: "Amnesia: The Dark Descent".to_string(),
+            cover: "games/amnesia.png".to_string(),
         },
         Game {
             title: "Fallout 3".to_string(),
@@ -39,8 +40,7 @@ fn get_games() -> Vec<Game> {
         },
         Game {
             title: "Cyberpunk 2077".to_string(),
-            // cover: "games/cyberpunk_2077.png".to_string(),
-            cover: "https://cdn2.steamgriddb.com/file/sgdb-cdn/grid/51f993d243a0d38e4669ac0bc3f8df05.webp".to_string(),
+            cover: "games/cyberpunk_2077.webp".to_string(),
         },
         Game {
             title: "Half-Life".to_string(),
@@ -49,6 +49,14 @@ fn get_games() -> Vec<Game> {
         Game {
             title: "The Elder Scrolls IV: Oblivion".to_string(),
             cover: "games/the_elder_scrolls_oblivion.png".to_string(),
+        },
+        Game {
+            title: "Assassin's Creed II".to_string(),
+            cover: "games/assassins_creed_ii.png".to_string(),
+        },
+        Game {
+            title: "Warcraft III".to_string(),
+            cover: "games/warcraft_iii.png".to_string(),
         },
     ]
 }
