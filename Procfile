@@ -1,1 +1,1 @@
-api: ./api/my-website
+api: cd api && go build && ./api/my-website
