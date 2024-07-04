@@ -29,11 +29,12 @@
         margin: 15px;
         width: 300px;
         height: 350px;
-        box-shadow: -2px 2px 10px #232634;
+        box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.22);
       }
+      box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.22);
 
-      .cover:hover {
-        box-shadow: 0px 10px 10px #232634;
+      &:hover {
+        box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.22);
         transform: perspective(100px) rotateX(1deg);
       }
 
