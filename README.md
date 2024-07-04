@@ -1,7 +1,8 @@
 # Personal Website
 
 This is the source code for my personal website. It is built using [Dioxus](https://dioxuslabs.com/), Fullstack, crossplatform,lightning fast, fully typed Rust library for web.
-As for the back-end, it is built using [Gin](https://gin-gonic.com/), a web framework written in Go (Golang).
+As for the back-end, it is built using [Gin](https://gin-gonic.com/), a web framework written in Go (Golang).<br>
+_Unfortunately, the Go API is bloated as fuck, I don't like it._
 
 ## Installation
 

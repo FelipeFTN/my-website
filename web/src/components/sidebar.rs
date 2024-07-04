@@ -13,13 +13,25 @@ pub fn SideBar() -> Element {
                 h1 { "Felipe Tenório" },
                 p { "Software Developer" },
                 div { class: "social-links", 
+                    a { href: "mailto:FelipeFTN@protonmail.com",
+                    target: "_blank", rel: "noopener noreferrer",
+                        div { id: "email" }
+                        span { "FelipeFTN@protonmail.com" }
+                    }
                     a { href: "https://github.com/FelipeFTN", 
+                    target: "_blank", rel: "noopener noreferrer",
                         img { src: "github.svg", alt: "Github", id: "github" }
                         span { "@FelipeFTN" }
                     },
-                    a { href: "mailto:FelipeFTN@protonmail.com",
-                        div { id: "email" }
-                        span { "FelipeFTN@protonmail.com" }
+                    a { href: "https://www.instagram.com/_felipeftn",
+                    target: "_blank", rel: "noopener noreferrer",
+                        img { src: "instagram.svg", alt: "Instagram", id: "instagram" }
+                        span { "@_felipeftn" }
+                    }
+                    a { href: "https://matrix.to/#/@felipeftn:matrix.org",
+                    target: "_blank", rel: "noopener noreferrer",
+                        img { src: "element.svg", alt: "Element", id: "element" }
+                        span { "@felipeftn" }
                     }
                 }
             }
