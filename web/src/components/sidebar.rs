@@ -17,7 +17,7 @@ pub fn SideBar() -> Element {
                     target: "_blank", rel: "noopener noreferrer",
                         div { id: "email" }
                         span { "FelipeFTN@protonmail.com" }
-                    }
+                    },
                     a { href: "https://github.com/FelipeFTN", 
                     target: "_blank", rel: "noopener noreferrer",
                         img { src: "github.svg", alt: "Github", id: "github" }
@@ -27,12 +27,17 @@ pub fn SideBar() -> Element {
                     target: "_blank", rel: "noopener noreferrer",
                         img { src: "instagram.svg", alt: "Instagram", id: "instagram" }
                         span { "@_felipeftn" }
-                    }
+                    },
                     a { href: "https://matrix.to/#/@felipeftn:matrix.org",
                     target: "_blank", rel: "noopener noreferrer",
                         img { src: "element.svg", alt: "Element", id: "element" }
                         span { "@felipeftn" }
-                    }
+                    },
+                    a { href: "https://steamcommunity.com/id/FelipeFTN",
+                    target: "_blank", rel: "noopener noreferrer",
+                        img { src: "steam.svg", alt: "Steam", id: "steam" }
+                        span { "FelipeFTN" }
+                    },
                 }
             }
         }

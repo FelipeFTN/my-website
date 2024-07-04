@@ -73,6 +73,11 @@
           width: 20px;
           height: 20px;
         }
+        #steam {
+          filter: invert(100%);
+          width: 20px;
+          height: 20px;
+        }
         #email {
           background-color: white;
           -webkit-mask: url(email.svg) no-repeat center;
