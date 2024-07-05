@@ -12,11 +12,11 @@
   .projects-grid {
     justify-content: center;
     display: grid;
-    width: 50vw;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 250px));
-    grid-gap: 1rem;
+    width: 60vw;
+    max-width: 1080px;
+    grid-template-columns: repeat(auto-fill, minmax(285px, 230px));
+    grid-gap: 0.7rem;
     padding: 1rem;
-    /* align-items: flex-start; */
 
     .project-item {
       h1 {

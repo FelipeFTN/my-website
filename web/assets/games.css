@@ -5,20 +5,20 @@
   .subtitle {
     color: #bac2de;
   }
+
   .games-list {
     justify-content: center;
     display: grid;
-    width: 50vw;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 250px));
+    width: 60vw;
+    max-width: 1080px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 210px));
     grid-gap: 1rem;
     padding: 1rem;
+    margin: 0;
 
     .game {
       padding: 0;
       margin: 0;
-      .title {
-        color: #cdd6f4;
-      }
 
       .cover {
         transition: 0.2s;
@@ -27,8 +27,8 @@
         overflow: hidden;
         display: inline-block;
         margin: 15px;
-        width: 300px;
-        height: 350px;
+        width: 250px;
+        height: 300px;
         box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.22);
       }
       box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.22);

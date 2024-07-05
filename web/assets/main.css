@@ -11,6 +11,7 @@
 
 /* GENERAL */
 /* NOTE: The website responsivity is trash. I have to fix it later! */
+/* I COMPLETELY HATE USING MAGIC NUMBERS! */
 body {
   /* Font stuff */
   font-family: "Source Sans 3", sans-serif;
@@ -18,6 +19,7 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  font-size: 14px;
 
   /* Background */
   background-color: #1e1e2e;
@@ -31,9 +33,16 @@ body {
 main {
   display: flex;
   overflow-y: auto;
+  overflow-x: hidden;
   flex-direction: row;
+  max-width: 100%;
   height: 100vh;
   gap: 0;
 
   justify-content: space-between;
+}
+
+.main-content {
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
