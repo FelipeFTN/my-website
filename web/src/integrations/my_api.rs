@@ -23,6 +23,7 @@ pub struct MyRepositories {
 #[derive(Props, Clone, PartialEq, Serialize, Deserialize)]
 pub struct MyRepositoriesData {
     pub name: String,
+    pub repo_owner: String,
     pub description: String,
     pub stargazers_count: i16, // I could use 8 bytes integer size
     pub forks_count: i16,      // But the max size is 127, who knows I get big...
@@ -41,7 +42,7 @@ pub async fn get_my_repositories() -> Result<MyRepositories> {
         Err(_) => String::from("Failed to get response"),
     };
         
-    info!(data);
+    // info!(data);
     let resp: MyRepositories = serde_json::from_str(&data)?; // propagating error with ? operator
 
     Ok(resp)
@@ -59,7 +60,7 @@ pub async fn get_contributed_repositories() -> Result<MyRepositories> {
         Err(_) => String::from("Failed to get response"),
     };
 
-    info!(data);
+    // info!(data);
     let resp: MyRepositories = serde_json::from_str(&data)?; // propagating error with ? operator
 
     Ok(resp)

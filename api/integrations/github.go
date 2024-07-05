@@ -65,6 +65,11 @@ func (self *Github) ListRepositories(ctx context.Context) ([]models.RepositoryRe
 		return nil, err
 	}
 
+	// Fill in the owner field
+	for i := range repos {
+		repos[i].RepoOwner = self.cfg.Github.Username
+	}
+
 	// Save the data in the cache
 	data, err := json.Marshal(repos)
 	if err != nil {

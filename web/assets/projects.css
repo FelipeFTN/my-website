@@ -29,7 +29,9 @@
         margin: 0;
         color: #7f849c;
       }
-
+      a h1 {
+        text-decoration-color: #551a8b;
+      }
       grid-template-rows: auto;
       grid-template-columns: auto;
       font-size: 85%;
@@ -117,6 +119,20 @@
           }
           .Clojure {
             background-color: #db5855;
+          }
+
+          .repo-stars-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.5rem;
+          }
+
+          .repo-forks-icon {
+            filter: invert(100%);
+            transform: rotate(180deg);
+            width: 15px;
+            height: 15px;
+            margin-right: 0.5rem;
           }
         }
       }

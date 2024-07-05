@@ -22,6 +22,7 @@ pub fn Projects() -> Element {
                         data: vec![
                             MyRepositoriesData {
                                 name: "Failed to get my repositories".to_string(),
+                                repo_owner: "NoOwner".to_string(),
                                 description: "Failed to get my repositories".to_string(),
                                 stargazers_count: 0,
                                 forks_count: 0,
@@ -50,6 +51,7 @@ pub fn Projects() -> Element {
                         data: vec![
                             MyRepositoriesData {
                                 name: "Failed to get contributed repositories".to_string(),
+                                repo_owner: "NoOwner".to_string(),
                                 description: "Failed to get contributed repositories".to_string(),
                                 stargazers_count: 0,
                                 forks_count: 0,
@@ -91,21 +93,31 @@ pub fn Projects() -> Element {
 
 #[component]
 fn Item(repo: MyRepositoriesData) -> Element {
+    let url = format!("https://github.com/{}/{}", repo.repo_owner, repo.name);
+    let language_url = format!("https://github.com/topics/{}", repo.language.to_lowercase().replace("+", "p"));
+    let stars_url = format!("https://github.com/{}/{}/stargazers", repo.repo_owner, repo.name);
+    let forks_url = format!("https://github.com/{}/{}/forks", repo.repo_owner, repo.name);
     rsx! {
         div { class: "project-item",
-            h1 { "{repo.name}" }
+            a { href: "{url}",
+            target: "_blank", rel: "noopener noreferrer",
+                h1 { "{repo.name}" }
+            }
             p { "{repo.description}" }
             div { class: "project-tags",
-                a { class: "repo-language", href: "#",
+                a { class: "repo-language", href: "{language_url}",
+                target: "_blank", rel: "noopener noreferrer",
                     div { class: "repo-language-color {repo.language.to_string().replace(\"+\", \"Plus\")}", "" }
                     span { class: "repo-language-text", "{repo.language.to_string()}" }
                 }
-                a { class: "repo-stars", href: "#",
-                    div { class: "repo-stars-icon", "" }
+                a { class: "repo-stars", href: "{stars_url}",
+                target: "_blank", rel: "noopener noreferrer",
+                    img { class: "repo-stars-icon", src: "star.svg", alt: "Stars" }
                     span { class: "repo-stars-text", "{repo.stargazers_count.to_string()}" }
                 }
-                a { class: "repo-forks", href: "#",
-                    div { class: "repo-forks-icon", "" }
+                a { class: "repo-forks", href: "{forks_url}",
+                target: "_blank", rel: "noopener noreferrer",
+                    img { class: "repo-forks-icon", src: "fork.svg", alt: "Forks" }
                     span { class: "repo-forks-text", "{repo.forks_count.to_string()}" }
                 }
             }
