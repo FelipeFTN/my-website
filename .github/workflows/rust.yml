@@ -9,10 +9,15 @@ jobs:
   dioxus-deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+      - name: "Change directory"
+        run: |
+          mv ./web/* ./
+          rm -rf ./web
       - name: "Dioxus Deploy"
         uses: DioxusLabs/deploy-action@0.1.1
         with:
           toolchain: "nightly"
-          rootPath: "web"
+          rootPath: "."
           buildMode: "release"
           outDirectory: "dist"
