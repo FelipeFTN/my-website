@@ -30,8 +30,10 @@ pub struct MyRepositoriesData {
     pub language: String,
 }
 
+const API_URL: &str = "https://felipeftn-my-website-api-fd0af1c95775.herokuapp.com";
+
 pub async fn get_my_repositories() -> Result<MyRepositories> {
-    let response = reqwest::get("http://localhost:8081/v1/my_repositories")
+    let response = reqwest::get(format!("{}/v1/my_repositories", API_URL))
         .await
         .expect("failed to reach MyAPI")
         .text()
@@ -49,7 +51,7 @@ pub async fn get_my_repositories() -> Result<MyRepositories> {
 }
 
 pub async fn get_contributed_repositories() -> Result<MyRepositories> {
-    let response = reqwest::get("http://localhost:8081/v1/contributed_repositories")
+    let response = reqwest::get(format!("{}/v1/contributed_repositories", API_URL))
         .await
         .expect("failed to reach MyAPI")
         .text()
