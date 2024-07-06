@@ -1,7 +1,7 @@
 [server]
 environment="production"
-mode="debug"
-port="8081"
+mode="release"
+port="80"
 [github]
 username="FelipeFTN"
 token="secret_github_token"
