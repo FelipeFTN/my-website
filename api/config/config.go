@@ -1,8 +1,6 @@
 package config
 
 import (
-	"os"
-
 	"github.com/spf13/viper"
 )
 
@@ -51,22 +49,22 @@ func Get() *Config {
 
 	cfg = Config{
 		Server: Server{
-			Environment: os.Getenv("ENVIRONMENT"),
-			Port:        os.Getenv("PORT"),
-			Mode:        os.Getenv("MODE"),
+			Environment: viper.GetString("ENVIRONMENT"),
+			Port:        viper.GetString("PORT"),
+			Mode:        viper.GetString("MODE"),
 		},
 		Github: Github{
-			Username: os.Getenv("GITHUB_USERNAME"),
-			Token:    os.Getenv("GITHUB_TOKEN"),
+			Username: viper.GetString("GITHUB_USERNAME"),
+			Token:    viper.GetString("GITHUB_TOKEN"),
 		},
 		Cache: Cache{
-			TTL: os.Getenv("CACHE_TTL"),
+			TTL: viper.GetString("CACHE_TTL"),
 		},
 	}
-	err := viper.Unmarshal(&cfg)
-	if err != nil {
-		panic(err)
-	}
+	// err := viper.Unmarshal(&cfg)
+	// if err != nil {
+	// 	panic(err)
+	// }
 
 	return &cfg
 }
