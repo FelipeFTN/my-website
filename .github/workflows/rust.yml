@@ -5,24 +5,6 @@ on:
     branches:
       - master
 
-inputs:
-  buildMode:
-    description: "Build projects using different modes [default: 'release']"
-    required: true
-    default: "release"
-  toolchain:
-    description: "Build projects using a different rust toolchain [default: 'stable']"
-    required: true
-    default: "nightly"
-  outDirectory:
-    description: "The `out_dir` property configured in Dioxus.toml [default: 'dist']"
-    required: true
-    default: "dist"
-  rootPath:
-    description: "Source code root path [default: '.']"
-    required: true
-    default: "."
-
 jobs:
   dioxus-deploy:
     runs-on: ubuntu-latest
