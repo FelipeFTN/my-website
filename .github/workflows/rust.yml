@@ -5,9 +5,33 @@ on:
     branches:
       - master
 
+inputs:
+  buildMode:
+    description: "Build projects using different modes [default: 'release']"
+    required: true
+    default: "release"
+  toolchain:
+    description: "Build projects using a different rust toolchain [default: 'stable']"
+    required: true
+    default: "nightly"
+  outDirectory:
+    description: "The `out_dir` property configured in Dioxus.toml [default: 'dist']"
+    required: true
+    default: "dist"
+  rootPath:
+    description: "Source code root path [default: '.']"
+    required: true
+    default: "."
+
 jobs:
   dioxus-deploy:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        toolchain: ["nightly"]
+        buildMode: ["release"]
+        outDirectory: ["dist"]
+        rootPath: ["."]
 
     steps:
       - uses: actions/checkout@v4
@@ -27,7 +51,7 @@ jobs:
       - name: "Set up Rust toolchain"
         uses: actions-rs/toolchain@v1.0.6
         with:
-          toolchain: ${{ inputs.toolchain }}
+          toolchain: ${{ matrix.toolchain }}
           profile: minimal
           target: wasm32-unknown-unknown
           override: true
@@ -35,35 +59,16 @@ jobs:
       - name: "Cache Rust dependencies"
         uses: Swatinem/rust-cache@v2
 
-      - name: "Install Dioxus-CLI"
+      - name: "Install Dioxus-CLI & Build Project 🎁"
         shell: bash
-        run: cargo install --git https://github.com/DioxusLabs/dioxus dioxus-cli
+        run: |
+          cargo install --git https://github.com/DioxusLabs/dioxus dioxus-cli
+          rustup toolchain install ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
+          cd ${{ matrix.rootPath }} && dx build --${{ matrix.buildMode }} && cp ./${{ matrix.outDirectory }}/index.html ./${{ matrix.outDirectory }}/404.html
 
-      # - name: "Build Project 🎁"
-      #   shell: bash
-      #   run: cd ${{ inputs.rootPath }} && dx build --${{ inputs.buildMode }} && cp ./${{ inputs.outDirectory }}/index.html ./${{ inputs.outDirectory }}/404.html
-      #
-      # - name: "Deploy Project 🚀"
-      #   uses: JamesIves/github-pages-deploy-action@v4.4.1
-      #   with:
-      #     branch: gh-pages
-      #     folder: ${{ inputs.rootPath }}/${{ inputs.outDirectory }}
-      #     clean: false
-
-inputs:
-  buildMode:
-    description: "Build projects using different modes [default: 'release']"
-    required: true
-    default: "release"
-  toolchain:
-    description: "Build projects using a different rust toolchain [default: 'stable']"
-    required: true
-    default: "nightly"
-  outDirectory:
-    description: "The `out_dir` property configured in Dioxus.toml [default: 'dist']"
-    required: true
-    default: "dist"
-  rootPath:
-    description: "Source code root path [default: '.']"
-    required: true
-    default: "."
+      - name: "Deploy Project 🚀"
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          branch: gh-pages
+          folder: ${{ matrix.rootPath }}/${{ matrix.outDirectory }}
+          clean: false
