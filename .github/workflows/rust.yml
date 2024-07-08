@@ -8,16 +8,62 @@ on:
 jobs:
   dioxus-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
-      - name: "Change directory"
+      - name: "Checkout Repository"
         run: |
           mv ./web/* ./
           rm -rf ./web
-      - name: "Dioxus Deploy"
-        uses: DioxusLabs/deploy-action@0.1.1
+
+      # - name: "Dioxus Deploy"
+      #   uses: DioxusLabs/deploy-action@0.1.1
+      #   with:
+      #     toolchain: "nightly"
+      #     rootPath: "."
+      #     buildMode: "release"
+      #     outDirectory: "dist"
+
+      - name: "Set up Rust toolchain"
+        uses: actions-rs/toolchain@v1.0.6
         with:
-          toolchain: "nightly"
-          rootPath: "."
-          buildMode: "release"
-          outDirectory: "dist"
+          toolchain: ${{ inputs.toolchain }}
+          profile: minimal
+          target: wasm32-unknown-unknown
+          override: true
+
+      - name: "Cache Rust dependencies"
+        uses: Swatinem/rust-cache@v2
+
+      - name: "Install Dioxus-CLI"
+        shell: bash
+        run: cargo install --git https://github.com/DioxusLabs/dioxus dioxus-cli
+
+      # - name: "Build Project 🎁"
+      #   shell: bash
+      #   run: cd ${{ inputs.rootPath }} && dx build --${{ inputs.buildMode }} && cp ./${{ inputs.outDirectory }}/index.html ./${{ inputs.outDirectory }}/404.html
+      #
+      # - name: "Deploy Project 🚀"
+      #   uses: JamesIves/github-pages-deploy-action@v4.4.1
+      #   with:
+      #     branch: gh-pages
+      #     folder: ${{ inputs.rootPath }}/${{ inputs.outDirectory }}
+      #     clean: false
+
+inputs:
+  buildMode:
+    description: "Build projects using different modes [default: 'release']"
+    required: true
+    default: "release"
+  toolchain:
+    description: "Build projects using a different rust toolchain [default: 'stable']"
+    required: true
+    default: "nightly"
+  outDirectory:
+    description: "The `out_dir` property configured in Dioxus.toml [default: 'dist']"
+    required: true
+    default: "dist"
+  rootPath:
+    description: "Source code root path [default: '.']"
+    required: true
+    default: "."
