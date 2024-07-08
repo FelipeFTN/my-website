@@ -1,0 +1,103 @@
+.sidebar {
+  position: sticky;
+  background-color: #181825;
+  border: 0px solid #181825;
+  min-width: 330px;
+  max-width: 400px;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  margin: 0;
+  flex: 0 1 25%;
+  padding: 1rem;
+
+  h1 {
+    color: #cdd6f4;
+    margin-bottom: 0;
+  }
+  p {
+    color: #cdd6f4;
+    margin-top: 0.5rem;
+  }
+
+  .profile {
+    padding-top: 2rem;
+    text-align: center;
+    color: #cdd6f4;
+
+    .profile-frame {
+      margin-left: auto;
+      margin-right: auto;
+      align-items: center;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 2px dashed #cdd6f4;
+      animation: spin 20s linear infinite;
+      img {
+        width: 150px;
+        border-radius: 50%;
+        animation: counterspin 20s linear infinite;
+      }
+    }
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      align-content: end;
+      bottom: 0;
+      a {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        color: #cdd6f4;
+        font-size: 1rem;
+        margin-bottom: 0.7rem;
+
+        span {
+          margin-left: 0.5rem;
+        }
+        #github {
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          background-color: white;
+        }
+        #element {
+          filter: invert(100%);
+          width: 30px;
+          height: 30px;
+        }
+        #instagram {
+          filter: invert(100%);
+          width: 20px;
+          height: 20px;
+        }
+        #steam {
+          filter: invert(100%);
+          width: 20px;
+          height: 20px;
+        }
+        #email {
+          background-color: white;
+          -webkit-mask: url(email.svg) no-repeat center;
+          mask: url(email.svg) no-repeat center;
+          mask-size: 20px;
+          width: 20px;
+          height: 20px;
+          border-radius: 10%;
+        }
+      }
+    }
+  }
+}
+@keyframes spin {
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+@keyframes counterspin {
+  100% {
+    transform: rotateZ(-360deg);
+  }
+}

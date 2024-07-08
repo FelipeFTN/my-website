@@ -1,0 +1,146 @@
+.projects {
+  .title {
+    color: #cdd6f4;
+  }
+  .subtitle {
+    color: #bac2de;
+  }
+  .project-tags {
+    color: #bac2de;
+  }
+
+  .projects-grid {
+    justify-content: center;
+    display: grid;
+    width: 60vw;
+    max-width: 1080px;
+    grid-template-columns: repeat(auto-fill, minmax(285px, 230px));
+    grid-gap: 0.7rem;
+    padding: 1rem;
+
+    .project-item {
+      h1 {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: #a6adc8;
+      }
+      p {
+        margin: 0;
+        color: #7f849c;
+      }
+      a h1 {
+        text-decoration-color: #551a8b;
+      }
+      grid-template-rows: auto;
+      grid-template-columns: auto;
+      font-size: 85%;
+      background-color: #181825;
+      border-radius: 10px;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      width: 250px;
+      min-height: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 100%;
+
+      .project-tags {
+        gap: 0.5rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: row;
+        a {
+          /* Optional decoration */
+          /* color: #bac2de; */
+          /* text-decoration: none; */
+          /* padding: 0.5rem; */
+          /* border-radius: 5px; */
+          /* background-color: #1e1e2e; */
+          /* transition: all 0.3s ease; */
+          /* text-decoration: none; */
+          color: #cba6f7;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          .repo-language-color {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            background-color: #cba6f7;
+          }
+
+          .Rust {
+            background-color: #dea584;
+          }
+          .C {
+            background-color: #555555;
+          }
+          .CPlusPlus {
+            background-color: #f34b7d;
+          }
+          .Go {
+            background-color: #00add8;
+          }
+          .Assembly {
+            background-color: #6e4c13;
+          }
+          .Java {
+            background-color: #b07219;
+          }
+          .JavaScript {
+            background-color: #f7df1e;
+          }
+          .TypeScript {
+            background-color: #2b7489;
+          }
+          .Python {
+            background-color: #3572a5;
+          }
+          .Ruby {
+            background-color: #701516;
+          }
+          .Lua {
+            background-color: #000080;
+          }
+          .Shell {
+            background-color: #89e051;
+          }
+          .HTML {
+            background-color: #e34c26;
+          }
+          .CSS {
+            background-color: #563d7c;
+          }
+          .Clojure {
+            background-color: #db5855;
+          }
+
+          .repo-stars-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.5rem;
+          }
+
+          .repo-forks-icon {
+            filter: invert(100%);
+            transform: rotate(180deg);
+            width: 15px;
+            height: 15px;
+            margin-right: 0.5rem;
+          }
+        }
+      }
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}

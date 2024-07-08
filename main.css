@@ -1,0 +1,48 @@
+/* FONTS */
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap");
+
+/* IMPORTS */
+@import url("sidebar.css");
+@import url("projects.css");
+@import url("blog.css");
+@import url("books.css");
+@import url("games.css");
+
+/* GENERAL */
+/* NOTE: The website responsivity is trash. I have to fix it later! */
+/* I COMPLETELY HATE USING MAGIC NUMBERS! */
+body {
+  /* Font stuff */
+  font-family: "Source Sans 3", sans-serif;
+  font-family: "Ubuntu Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+
+  /* Background */
+  background-color: #1e1e2e;
+
+  /* General */
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-direction: row;
+  max-width: 100%;
+  height: 100vh;
+  gap: 0;
+
+  justify-content: space-between;
+}
+
+.main-content {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
