@@ -36,6 +36,7 @@ jobs:
           cargo install --git https://github.com/DioxusLabs/dioxus dioxus-cli
           rustup toolchain install ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
           cd ${{ matrix.rootPath }} && dx build --${{ matrix.buildMode }} && cp ./${{ matrix.outDirectory }}/index.html ./${{ matrix.outDirectory }}/404.html
+          cp nginx.conf ${{ matrix.outDirectory }}/nginx.conf
 
       - name: "Cache Rust dependencies"
         uses: Swatinem/rust-cache@v2
