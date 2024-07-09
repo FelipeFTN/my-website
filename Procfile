@@ -1,1 +1,1 @@
-web: nginx -g daemon off;
+web: bin/start-nginx-static
