@@ -45,6 +45,7 @@ pub fn Main() -> Element {
             // div { min_width: "330px", max_width: "400px" }
             components::sidebar::SideBar {}
             div { class: "main-content",
+                components::gallery::Gallery {},
                 components::projects::Projects {},
                 components::blog::Blog {},
                 components::books::Books {},
