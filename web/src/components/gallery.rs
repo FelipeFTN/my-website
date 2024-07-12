@@ -45,6 +45,9 @@ pub fn Gallery() -> Element {
                     get_gallery().iter().map(|gallery: &Gallery| rsx!{
                         GalleryItem {
                             title: gallery.title.clone(), photo: gallery.photo.clone(),
+                            // Bro, I really hate using html stuff on dioxus components
+                            // I was really destroyed at programming this time.
+                            // I will come back here later, when I get less dump at Rust.
                             // onmousedown: move |_| {
                             //     selected_picture.set(Gallery{
                             //         title: gallery.title.clone(),
@@ -61,13 +64,19 @@ pub fn Gallery() -> Element {
 
 #[component]
 fn GalleryItem(title: String, photo: String/* , onmousedown: EventHandler<MouseEvent> */) -> Element {
+    let f_title = title
+        .replace("_", " ")
+        .replace("9", "?")
+        .replace("0", ".")
+        .replace("1", "' ")
+        .replace("2", ",")
+    ; // is it ugly to do this with the semicolon?
+
+    // Simple as f&ck
     rsx! {
         div { class: "frame",
-            div { class: "frame-wrapper",
-                h2 { class: "title", title },
-                img { class: "photo", src: photo }
-                div { class: "gradient" }
-            }
+            img { class: "photo", src: photo },
+            h2 { class: "title", "{f_title}" },
         }
     }
 }
