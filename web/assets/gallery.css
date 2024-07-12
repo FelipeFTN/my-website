@@ -8,13 +8,30 @@
 
   .gallery-grid {
     text-align: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 5px;
+
+    .frame img {
+      min-height: 200px;
+      max-height: 300px;
+      /* width: 100%; */
+      /* height: auto; */
+      display: block;
+      border-width: 2px;
+      border-style: solid;
+      border-color: #bbbab4 #c7c7bf #e5e4df #c7c7bf;
+      box-shadow:
+        0 -1px 1px rgba(0, 0, 0, 0.1),
+        0 1px 1px 1px rgba(255, 255, 255, 0.7);
+    }
 
     /* I know, I'm a genius at CSS B) */
     /* *copied every single line from codePAIN* */
     .frame {
       cursor: crosshair; /* ???????? WHY ???????? */
-      margin: 10px;
-      display: inline-block;
+      /* margin: 10px; */
+      display: block;
       padding: 20px;
       border-width: 20px;
       border-style: solid;
@@ -43,6 +60,9 @@
         margin: 0;
         margin-bottom: -10px;
         margin-top: 5px;
+      }
+      .large {
+        width: 100%;
       }
     }
 
@@ -80,16 +100,6 @@
         rgba(255, 255, 255, 0.4),
         rgba(255, 255, 255, 0)
       );
-    }
-    .frame img {
-      min-height: 200px;
-      max-height: 300px;
-      border-width: 2px;
-      border-style: solid;
-      border-color: #bbbab4 #c7c7bf #e5e4df #c7c7bf;
-      box-shadow:
-        0 -1px 1px rgba(0, 0, 0, 0.1),
-        0 1px 1px 1px rgba(255, 255, 255, 0.7);
     }
   }
 }

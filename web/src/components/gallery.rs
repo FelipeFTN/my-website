@@ -64,18 +64,25 @@ pub fn Gallery() -> Element {
 
 #[component]
 fn GalleryItem(title: String, photo: String/* , onmousedown: EventHandler<MouseEvent> */) -> Element {
+    let mut additional_classes = String::new();
+    if title.contains("8") {
+        additional_classes = "large".to_string();
+    }
+
+    // Here I'll do some symbols translations
     let f_title = title
         .replace("_", " ")
         .replace("9", "?")
         .replace("0", ".")
         .replace("1", "' ")
         .replace("2", ",")
+        .replace("8", "")
     ; // is it ugly to do this with the semicolon?
 
     // Simple as f&ck
     rsx! {
         div { class: "frame",
-            img { class: "photo", src: photo },
+            img { class: "photo {additional_classes}", src: photo },
             h2 { class: "title", "{f_title}" },
         }
     }
