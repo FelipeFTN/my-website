@@ -17,12 +17,12 @@
     margin: 0;
 
     .game {
+      cursor: pointer;
       padding: 0;
       margin: 0;
 
       .cover {
         transition: 0.2s;
-        cursor: pointer;
         position: relative;
         overflow: hidden;
         display: inline-block;

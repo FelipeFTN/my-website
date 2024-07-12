@@ -11,6 +11,9 @@ use dioxus_logger::tracing::{Level, info, error};
 // when I launch it online, but fuck it.
 // const API_HOST: &str = "http://127.0.0.1";
 // const API_PORT: &str = "8081";
+// Soon this should be https://api.felipeftn.dev
+// I just don't know how yet.
+const API_URL: &str = "https://felipeftn-my-website-api-fd0af1c95775.herokuapp.com";
 
 // I really should put this into some entities place
 #[derive(Props, Clone, PartialEq, Serialize, Deserialize)]
@@ -29,8 +32,6 @@ pub struct MyRepositoriesData {
     pub forks_count: i16,      // But the max size is 127, who knows I get big...
     pub language: String,
 }
-
-const API_URL: &str = "https://felipeftn-my-website-api-fd0af1c95775.herokuapp.com";
 
 pub async fn get_my_repositories() -> Result<MyRepositories> {
     let response = reqwest::get(format!("{}/v1/my_repositories", API_URL))

@@ -5,9 +5,10 @@
 /* IMPORTS */
 @import url("sidebar.css");
 @import url("projects.css");
-@import url("blog.css");
+@import url("gallery.css");
 @import url("books.css");
 @import url("games.css");
+@import url("blog.css");
 
 /* GENERAL */
 /* NOTE: The website responsivity is trash. I have to fix it later! */

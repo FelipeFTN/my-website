@@ -49,6 +49,7 @@ pub fn Main() -> Element {
                 components::blog::Blog {},
                 components::books::Books {},
                 components::games::Games {},
+                components::gallery::Gallery {},
             }
             div {  class: "div-to-align-the-layout" }
         }
