@@ -5,7 +5,7 @@ use include_dir::{include_dir, Dir};
 use dioxus_logger::tracing::{Level, info, error};
 use std::path::Path;
 
-#[derive(Debug)]
+#[derive(Debug, Clone, PartialEq)]
 struct Gallery {
     title: String,
     photo: String,
@@ -23,7 +23,7 @@ fn get_gallery() -> Vec<Gallery> {
     for file in GALLERY.files() {
         let title = file.path().file_stem().unwrap().to_str().unwrap().to_string();
         let photo = format!("gallery/{}", file.path().to_str().unwrap().to_string());
-        info!("Gallery: {:?}", title);
+        // info!("Gallery: {:?}", title);
         gallery.push(Gallery { title, photo });
     };
 
@@ -33,7 +33,21 @@ fn get_gallery() -> Vec<Gallery> {
 
 #[component]
 pub fn Gallery() -> Element {
-    // let mut selected_picture = use_signal(|| Gallery{title: "".to_string(), photo: "".to_string()});
+    let gallery: Vec<Gallery> = get_gallery();
+    let mut gallery_grid: Vec<Vec<Gallery>> = vec![];
+
+    for i in (0..gallery.len()).step_by(2) {
+        let end = std::cmp::min(i + 2, gallery.len());
+        let gallery_row: Vec<Gallery> = gallery[i..end].to_vec();
+        info!("index: {}; row: {:?}", i, gallery_row);
+
+        // Check if the vector is not empty
+        if !gallery_row.last().is_none() {
+            gallery_grid.push(gallery_row);
+        }
+        // info!("{:?}", gallery_list);
+    }
+    info!("grid: {:?}", gallery_grid);
 
     rsx! {
         div { class: "gallery",
@@ -42,21 +56,35 @@ pub fn Gallery() -> Element {
 
             div { class: "gallery-grid",
                 {
-                    get_gallery().iter().map(|gallery: &Gallery| rsx!{
-                        GalleryItem {
-                            title: gallery.title.clone(), photo: gallery.photo.clone(),
-                            // Bro, I really hate using html stuff on dioxus components
-                            // I was really destroyed at programming this time.
-                            // I will come back here later, when I get less dump at Rust.
-                            // onmousedown: move |_| {
-                            //     selected_picture.set(Gallery{
-                            //         title: gallery.title.clone(),
-                            //         photo: gallery.photo.clone(),
-                            //     });
-                            // }
-                        }
+                    gallery_grid.iter().map(|g: &Vec<Gallery>| rsx!{
+                        GalleryRow { gallery_list: g.clone() }
                     })
                 }
+            }
+        }
+    }
+}
+
+#[component]
+fn GalleryRow(gallery_list: Vec<Gallery>) -> Element {
+    rsx! {
+        div { class: "gallery-row",
+            {
+                gallery_list.iter().map(|gallery: &Gallery| rsx!{
+                    // Bro, I really hate using html stuff on dioxus components
+                    // I was really destroyed at programming this time.
+                    // I will come back here later, when I get less dump at Rust.
+                    GalleryItem {
+                        title: gallery.title.clone(),
+                        photo: gallery.photo.clone(),
+                        // onmousedown: move |_| {
+                        //     selected_picture.set(Gallery{
+                        //         title: gallery.title.clone(),
+                        //         photo: gallery.photo.clone(),
+                        //     });
+                        // }
+                    }
+                })
             }
         }
     }
