@@ -5,6 +5,11 @@ use dioxus::prelude::*;
 #[component]
 pub fn SideBar() -> Element {
     rsx! {
+        div { class: "profile-icon",
+            div { class: "profile-frame", 
+                img { src: "https://avatars.githubusercontent.com/u/80127749?v=4", alt: "Profile Picture"},
+            }
+        }
         div { class: "sidebar",
             div { class: "profile",
                 div { class: "profile-frame", 

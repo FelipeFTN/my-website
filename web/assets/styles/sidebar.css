@@ -25,21 +25,6 @@
     text-align: center;
     color: #cdd6f4;
 
-    .profile-frame {
-      margin-left: auto;
-      margin-right: auto;
-      align-items: center;
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 2px dashed #cdd6f4;
-      animation: spin 20s linear infinite;
-      img {
-        width: 150px;
-        border-radius: 50%;
-        animation: counterspin 20s linear infinite;
-      }
-    }
     .social-links {
       display: flex;
       flex-direction: column;
@@ -91,6 +76,26 @@
     }
   }
 }
+.profile-icon {
+  display: none;
+  position: sticky;
+}
+.profile-frame {
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px dashed #cdd6f4;
+  animation: spin 20s linear infinite;
+  img {
+    width: 150px;
+    border-radius: 50%;
+    animation: counterspin 20s linear infinite;
+  }
+}
+
 @keyframes spin {
   100% {
     transform: rotateZ(360deg);
@@ -103,6 +108,27 @@
 }
 @media screen and (max-width: 768px) {
   .sidebar {
+    display: none;
+  }
+  .profile-icon {
+    display: initial;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 2;
+
+    .profile-frame {
+      width: 75px;
+      height: 75px;
+      border: 2px dashed #cdd6f4;
+      img {
+        width: 75px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 300px) {
+  .profile-icon {
     display: none;
   }
 }
