@@ -46,9 +46,9 @@ pub fn Main() -> Element {
             components::sidebar::SideBar {}
             div { class: "main-content",
                 components::projects::Projects {},
+                components::games::Games {},
                 components::blog::Blog {},
                 components::books::Books {},
-                components::games::Games {},
             }
             div {  class: "div-to-align-the-layout" }
         }

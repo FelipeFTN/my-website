@@ -1,9 +1,11 @@
 .games {
   .title {
     color: #cdd6f4;
+    margin-left: 10px;
   }
   .subtitle {
     color: #bac2de;
+    margin-left: 10px;
   }
 
   .games-list {
@@ -83,6 +85,12 @@
           height 0.3s ease-in-out,
           opacity 0.3s ease-in-out;
       }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .games-list {
+      width: 100vw;
     }
   }
 }

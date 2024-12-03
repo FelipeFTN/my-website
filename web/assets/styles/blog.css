@@ -1,11 +1,14 @@
 .blog {
   .title {
     color: #cdd6f4;
+    margin-left: 10px;
   }
   .subtitle {
     color: #bac2de;
+    margin-left: 10px;
   }
   .not-found {
     color: #babbf1;
+    text-align: center;
   }
 }

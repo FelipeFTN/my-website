@@ -46,3 +46,9 @@ main {
   margin-left: auto !important;
   margin-right: auto !important;
 }
+
+@media screen and (max-width: 768px) {
+  .div-to-align-the-layout {
+    display: none;
+  }
+}

@@ -1,9 +1,11 @@
 .projects {
   .title {
     color: #cdd6f4;
+    margin-left: 10px;
   }
   .subtitle {
     color: #bac2de;
+    margin-left: 10px;
   }
   .project-tags {
     color: #bac2de;
@@ -141,6 +143,12 @@
         transform: translateY(-5px);
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
       }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .projects-grid {
+      width: 90vw;
     }
   }
 }
