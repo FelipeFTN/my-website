@@ -34,6 +34,7 @@ jobs:
         run: |
           cargo install --git https://github.com/DioxusLabs/dioxus dioxus-cli
           rustup toolchain install ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
+          sed -i 's/styles\/main.css/assets\/styles\/main.css/g' Dioxus.toml
           dx build --${{ matrix.buildMode }}
           cp -r config/ ./${{ matrix.outDirectory }}/
           cp -r ./target/dx/my-website/release/web/public/* ${{ matrix.outDirectory }}/ 2>/dev/null
