@@ -25,22 +25,22 @@ pub fn SideBar() -> Element {
                     },
                     a { href: "https://github.com/FelipeFTN", 
                     target: "_blank", rel: "noopener noreferrer",
-                        img { src: "github.svg", alt: "Github", id: "github" }
+                        img { src: "assets/github.svg", alt: "Github", id: "github" }
                         span { "@FelipeFTN" }
                     },
                     a { href: "https://www.instagram.com/_felipeftn",
                     target: "_blank", rel: "noopener noreferrer",
-                        img { src: "instagram.svg", alt: "Instagram", id: "instagram" }
+                        img { src: "assets/instagram.svg", alt: "Instagram", id: "instagram" }
                         span { "@_felipeftn" }
                     },
                     a { href: "https://matrix.to/#/@felipeftn:matrix.org",
                     target: "_blank", rel: "noopener noreferrer",
-                        img { src: "element.svg", alt: "Element", id: "element" }
+                        img { src: "assets/element.svg", alt: "Element", id: "element" }
                         span { "@felipeftn" }
                     },
                     a { href: "https://steamcommunity.com/id/FelipeFTN",
                     target: "_blank", rel: "noopener noreferrer",
-                        img { src: "steam.svg", alt: "Steam", id: "steam" }
+                        img { src: "assets/steam.svg", alt: "Steam", id: "steam" }
                         span { "FelipeFTN" }
                     },
                 }

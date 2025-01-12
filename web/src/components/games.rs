@@ -11,52 +11,51 @@ fn get_games() -> Vec<Game> {
     vec![
         Game {
             title: "Bioshock".to_string(),
-            cover: "games/bioshock.png".to_string(),
-            
+            cover: "assets/games/bioshock.png".to_string(),
         },
         Game {
             title: "Age of Empires II".to_string(),
-            cover: "games/age_of_empires_ii.png".to_string(),
+            cover: "assets/games/age_of_empires_ii.png".to_string(),
         },
         Game {
             title: "The Witcher".to_string(),
-            cover: "games/the_witcher.png".to_string(),
+            cover: "assets/games/the_witcher.png".to_string(),
         },
         Game {
             title: "Portal".to_string(),
-            cover: "games/portal.png".to_string(),
+            cover: "assets/games/portal.png".to_string(),
         },
         Game {
             title: "Amnesia: The Dark Descent".to_string(),
-            cover: "games/amnesia.png".to_string(),
+            cover: "assets/games/amnesia.png".to_string(),
         },
         Game {
             title: "Fallout 3".to_string(),
-            cover: "games/fallout.png".to_string(),
+            cover: "assets/games/fallout.png".to_string(),
         },
         Game {
             title: "Grim Fandango".to_string(),
-            cover: "games/grim_fandango.png".to_string(),
+            cover: "assets/games/grim_fandango.png".to_string(),
         },
         Game {
             title: "Cyberpunk 2077".to_string(),
-            cover: "games/cyberpunk_2077.webp".to_string(),
+            cover: "assets/games/cyberpunk_2077.webp".to_string(),
         },
         Game {
             title: "Half-Life".to_string(),
-            cover: "games/half_life.png".to_string(),
+            cover: "assets/games/half_life.png".to_string(),
         },
         Game {
             title: "The Elder Scrolls IV: Oblivion".to_string(),
-            cover: "games/the_elder_scrolls_oblivion.png".to_string(),
+            cover: "assets/games/the_elder_scrolls_oblivion.png".to_string(),
         },
         Game {
             title: "Assassin's Creed II".to_string(),
-            cover: "games/assassins_creed_ii.png".to_string(),
+            cover: "assets/games/assassins_creed_ii.png".to_string(),
         },
         Game {
             title: "Warcraft III".to_string(),
-            cover: "games/warcraft_iii.png".to_string(),
+            cover: "assets/games/warcraft_iii.png".to_string(),
         },
     ]
 }

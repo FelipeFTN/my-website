@@ -112,12 +112,12 @@ fn Item(repo: MyRepositoriesData) -> Element {
                 }
                 a { class: "repo-stars", href: "{stars_url}",
                 target: "_blank", rel: "noopener noreferrer",
-                    img { class: "repo-stars-icon", src: "star.svg", alt: "Stars" }
+                    img { class: "repo-stars-icon", src: "assets/star.svg", alt: "Stars" }
                     span { class: "repo-stars-text", "{repo.stargazers_count.to_string()}" }
                 }
                 a { class: "repo-forks", href: "{forks_url}",
                 target: "_blank", rel: "noopener noreferrer",
-                    img { class: "repo-forks-icon", src: "fork.svg", alt: "Forks" }
+                    img { class: "repo-forks-icon", src: "assets/fork.svg", alt: "Forks" }
                     span { class: "repo-forks-text", "{repo.forks_count.to_string()}" }
                 }
             }
