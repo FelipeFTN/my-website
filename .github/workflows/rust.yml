@@ -13,7 +13,6 @@ jobs:
         toolchain: ["nightly"]
         buildMode: ["release"]
         outDirectory: ["dist"]
-        rootPath: ["."]
 
     steps:
       - uses: actions/checkout@v4
@@ -35,8 +34,9 @@ jobs:
         run: |
           cargo install --git https://github.com/DioxusLabs/dioxus dioxus-cli
           rustup toolchain install ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
-          cd ${{ matrix.rootPath }} && dx build --${{ matrix.buildMode }}
-          cp -r config/ ${{ matrix.outDirectory }}/
+          dx build --${{ matrix.buildMode }}
+          cp -r config/ ./${{ matrix.outDirectory }}/
+          cp -r ./target/dx/my-website/release/web/public/* ${{ matrix.outDirectory }}/ 2>/dev/null
 
       - name: "Cache Rust dependencies"
         uses: Swatinem/rust-cache@v2
@@ -48,5 +48,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           branch: github-pages
-          folder: ${{ matrix.rootPath }}/${{ matrix.outDirectory }}
+          folder: ${{ matrix.outDirectory }}
           clean: true
