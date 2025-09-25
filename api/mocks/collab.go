@@ -5,12 +5,21 @@ import "github.com/FelipeFTN/my-website/models"
 func ListCollabRepositories() []models.RepositoryResponse {
 	return []models.RepositoryResponse{
 		{
+			Name:            "dunst",
+			RepoOwner:       "dunst-project",
+			Description:     "A lightweight and customizable notification-daemon",
+			StargazersCount: 5230,
+			ForksCount:      362,
+			Language:        "C",
+			URL:             "https://github.com/dunst-project/dunst",
+		},
+		{
 			Name:            "commitgpt",
 			RepoOwner:       "loadfms",
 			Description:     "CommitGPT is a command-line tool that generates a commit message based on the changes in the git diff, following the conventional commits standard.",
 			StargazersCount: 9,
 			ForksCount:      2,
-			Language:        "Rust",
+			Language:        "Go",
 			URL:             "https://github.com/loadfms/commitgpt",
 		},
 		{
