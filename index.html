@@ -1,28 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>my-website</title>
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="UTF-8" />
-  <link rel="stylesheet" href="assets/styles/main.css">
-<link rel="preload" href="/./wasm/my-website_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
-            <link rel="preload" href="/./wasm/my-website.js" as="script">
-            </head>
-  <body>
-    <div id="main"></div>
-  <script>
-            // We can't use a module script here because we need to start the script immediately when streaming
-            import("/./wasm/my-website.js").then(
-                ({ default: init }) => {
-                init("/./wasm/my-website_bg.wasm").then((wasm) => {
-                    if (wasm.__wbindgen_start == undefined) {
-                    wasm.main();
-                    }
-                });
-                }
-            );
-            </script>
-            
+    <head>
+        <title>my-website</title>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+    <link rel="stylesheet" href="assets/styles/main.css">
+<link rel="preload" as="script" href="/./assets/my-website-dxh2f3965d3811d58b7.js" crossorigin><link rel="preload" as="fetch" type="application/wasm" href="/./assets/my-website_bg-dxhcc1c8ee320baecc4.wasm" crossorigin></head>
+    <body>
+        <div id="main"></div>
+    <script type="module" async src="/./assets/my-website-dxh2f3965d3811d58b7.js"></script>
             </body>
 </html>
