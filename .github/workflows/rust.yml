@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        toolchain: ["nightly"]
+        toolchain: ["stable"]
         buildMode: ["release"]
         outDirectory: ["dist"]
 
@@ -21,20 +21,20 @@ jobs:
           mv ./web/* ./
           rm -rf ./web
 
-      - name: "Set up Rust toolchain"
-        uses: actions-rs/toolchain@v1.0.6
-        with:
-          toolchain: ${{ matrix.toolchain }}
-          profile: minimal
-          target: wasm32-unknown-unknown
-          override: true
+      - name: "Set up Rust"
+        shell: bash
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          source $HOME/.cargo/env
+          rustup toolchain install ${{ matrix.toolchain }}
+          rustup target add wasm32-unknown-unknown
 
       - name: "Build Dioxus Project 🎁"
         shell: bash
         run: |
-          cargo install --git https://github.com/DioxusLabs/dioxus dioxus-cli
-          rustup toolchain install ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
-          sed -i 's/styles\/main.css/assets\/styles\/main.css/g' Dioxus.toml
+          source $HOME/.cargo/env
+          curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+          cargo binstall dioxus-cli -y
           dx build --${{ matrix.buildMode }}
           cp -r config/ ./${{ matrix.outDirectory }}/
           cp -r ./target/dx/my-website/release/web/public/* ${{ matrix.outDirectory }}/ 2>/dev/null
