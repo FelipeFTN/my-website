@@ -6,8 +6,8 @@ use dioxus_logger::tracing::{Level, info, error};
 
 mod integrations;
 mod components;
-// Fuck env variables for now - I'll do it later.
-// mod config;
+
+static CSS: Asset = asset!("/assets/styles/main.css");
 
 #[derive(Clone, Routable, Debug, PartialEq)]
 enum Route {
@@ -26,7 +26,8 @@ fn main() {
 
 fn App() -> Element {
     rsx! {
-        Router::<Route> {}
+        Router::<Route> {},
+        document::Stylesheet { href: CSS },
     }
 }
 
