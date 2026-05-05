@@ -12,7 +12,6 @@ jobs:
       matrix:
         toolchain: ["stable"]
         buildMode: ["release"]
-        outDirectory: ["dist"]
 
     steps:
       - uses: actions/checkout@v4
@@ -36,8 +35,6 @@ jobs:
           curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
           cargo binstall dioxus-cli -y
           dx build --${{ matrix.buildMode }}
-          cp -r config/ ./${{ matrix.outDirectory }}/
-          cp -r ./target/dx/my-website/release/web/public/* ${{ matrix.outDirectory }}/ 2>/dev/null
 
       - name: "Cache Rust dependencies"
         uses: Swatinem/rust-cache@v2
@@ -49,5 +46,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           branch: github-pages
-          folder: ${{ matrix.outDirectory }}
+          folder: target/dx/my-website/${{ matrix.buildMode }}/web/public
           clean: true
