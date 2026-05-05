@@ -55,6 +55,10 @@ jobs:
       - name: "Move assets to public directory"
         run: |
             cp -r ./assets/ target/dx/my-website/release/web/public/assets/
+            # GitHub Pages serves 404.html for unknown paths — point it at
+            # index.html so the Dioxus client-side router handles all routes
+            cp target/dx/my-website/release/web/public/index.html \
+               target/dx/my-website/release/web/public/404.html
 
       ## Upload the built assets to be used in the deployment step
       - name: "Upload Pages artifact"
