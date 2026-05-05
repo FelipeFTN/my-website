@@ -2,25 +2,38 @@
 
 use dioxus::prelude::*;
 
+static BIOSHOCK:    Asset = asset!("/assets/games/bioshock.png");
+static AOE2:        Asset = asset!("/assets/games/age_of_empires_ii.png");
+static WITCHER:     Asset = asset!("/assets/games/the_witcher.png");
+static PORTAL:      Asset = asset!("/assets/games/portal.png");
+static AMNESIA:     Asset = asset!("/assets/games/amnesia.png");
+static FALLOUT:     Asset = asset!("/assets/games/fallout.png");
+static GRIM:        Asset = asset!("/assets/games/grim_fandango.png");
+static CYBERPUNK:   Asset = asset!("/assets/games/cyberpunk_2077.webp");
+static HALF_LIFE:   Asset = asset!("/assets/games/half_life.png");
+static OBLIVION:    Asset = asset!("/assets/games/the_elder_scrolls_oblivion.png");
+static AC2:         Asset = asset!("/assets/games/assassins_creed_ii.png");
+static WARCRAFT3:   Asset = asset!("/assets/games/warcraft_iii.png");
+
 struct Game {
-    title: String,
-    cover: String,
+    title: &'static str,
+    cover: Asset,
 }
 
 fn get_games() -> Vec<Game> {
     vec![
-        Game { title: "Bioshock".to_string(), cover: "assets/games/bioshock.png".to_string() },
-        Game { title: "Age of Empires II".to_string(), cover: "assets/games/age_of_empires_ii.png".to_string() },
-        Game { title: "The Witcher".to_string(), cover: "assets/games/the_witcher.png".to_string() },
-        Game { title: "Portal".to_string(), cover: "assets/games/portal.png".to_string() },
-        Game { title: "Amnesia: The Dark Descent".to_string(), cover: "assets/games/amnesia.png".to_string() },
-        Game { title: "Fallout 3".to_string(), cover: "assets/games/fallout.png".to_string() },
-        Game { title: "Grim Fandango".to_string(), cover: "assets/games/grim_fandango.png".to_string() },
-        Game { title: "Cyberpunk 2077".to_string(), cover: "assets/games/cyberpunk_2077.webp".to_string() },
-        Game { title: "Half-Life".to_string(), cover: "assets/games/half_life.png".to_string() },
-        Game { title: "The Elder Scrolls IV: Oblivion".to_string(), cover: "assets/games/the_elder_scrolls_oblivion.png".to_string() },
-        Game { title: "Assassin's Creed II".to_string(), cover: "assets/games/assassins_creed_ii.png".to_string() },
-        Game { title: "Warcraft III".to_string(), cover: "assets/games/warcraft_iii.png".to_string() },
+        Game { title: "Bioshock",                        cover: BIOSHOCK },
+        Game { title: "Age of Empires II",               cover: AOE2 },
+        Game { title: "The Witcher",                     cover: WITCHER },
+        Game { title: "Portal",                          cover: PORTAL },
+        Game { title: "Amnesia: The Dark Descent",       cover: AMNESIA },
+        Game { title: "Fallout 3",                       cover: FALLOUT },
+        Game { title: "Grim Fandango",                   cover: GRIM },
+        Game { title: "Cyberpunk 2077",                  cover: CYBERPUNK },
+        Game { title: "Half-Life",                       cover: HALF_LIFE },
+        Game { title: "The Elder Scrolls IV: Oblivion",  cover: OBLIVION },
+        Game { title: "Assassin's Creed II",             cover: AC2 },
+        Game { title: "Warcraft III",                    cover: WARCRAFT3 },
     ]
 }
 
@@ -31,8 +44,8 @@ pub fn GamesContent() -> Element {
             h1 { class: "games-title", "Games" }
             p { class: "games-subtitle", "Top games I have played." }
             div { class: "games-list",
-                {get_games().iter().map(|game| rsx!{
-                    GameItem { title: game.title.clone(), cover: game.cover.clone() }
+                {get_games().into_iter().map(|game| rsx!{
+                    GameItem { title: game.title, cover: game.cover }
                 })}
             }
         }
@@ -40,7 +53,7 @@ pub fn GamesContent() -> Element {
 }
 
 #[component]
-fn GameItem(title: String, cover: String) -> Element {
+fn GameItem(title: &'static str, cover: Asset) -> Element {
     rsx! {
         div { class: "game",
             div { class: "game-wrapper",

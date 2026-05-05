@@ -51,12 +51,9 @@ jobs:
           dx build --release
 
 
-      ## Check if assets directory is empty an log error
-      - name: "Move assets to public directory"
+      ## Create 404.html for SPA client-side routing support
+      - name: "Finalize public directory"
         run: |
-            cp -r ./assets/ target/dx/my-website/release/web/public/assets/
-            # GitHub Pages serves 404.html for unknown paths — point it at
-            # index.html so the Dioxus client-side router handles all routes
             cp target/dx/my-website/release/web/public/index.html \
                target/dx/my-website/release/web/public/404.html
 

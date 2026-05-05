@@ -5,6 +5,9 @@ use dioxus::prelude::*;
 use dioxus_logger::tracing::error;
 use crate::integrations::my_api::*;
 
+static STAR_ICON: Asset = asset!("/assets/star.svg");
+static FORK_ICON: Asset = asset!("/assets/fork.svg");
+
 #[component]
 pub fn Repositories() -> Element {
     let mut repositories = use_signal(|| vec![]);
@@ -107,11 +110,11 @@ fn RepoItem(repo: MyRepositoriesData) -> Element {
                     span { class: "repo-language-text", "{repo.language}" }
                 }
                 a { class: "repo-stars", href: "{stars_url}", target: "_blank", rel: "noopener noreferrer",
-                    img { class: "repo-stars-icon", src: "assets/star.svg", alt: "Stars" }
+                    img { class: "repo-stars-icon", src: STAR_ICON, alt: "Stars" }
                     span { class: "repo-stars-text", "{repo.stargazers_count}" }
                 }
                 a { class: "repo-forks", href: "{forks_url}", target: "_blank", rel: "noopener noreferrer",
-                    img { class: "repo-forks-icon", src: "assets/fork.svg", alt: "Forks" }
+                    img { class: "repo-forks-icon", src: FORK_ICON, alt: "Forks" }
                     span { class: "repo-forks-text", "{repo.forks_count}" }
                 }
             }

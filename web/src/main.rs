@@ -21,6 +21,8 @@ enum Route {
     BlogPost { slug: String },
     #[route("/games")]
     GamesPage {},
+    #[route("/:..segments")]
+    NotFound { segments: Vec<String> },
 }
 
 fn main() {
@@ -81,6 +83,21 @@ fn GamesPage() -> Element {
         components::navbar::NavBar {}
         div { class: "page-content",
             components::games::GamesContent {}
+        }
+    }
+}
+
+#[component]
+fn NotFound(segments: Vec<String>) -> Element {
+    let path = format!("/{}", segments.join("/"));
+    rsx! {
+        components::navbar::NavBar {}
+        div { class: "page-content",
+            div { class: "not-found",
+                h1 { "404" }
+                p { "The page " span { class: "not-found-path", "{path}" } " doesn't exist." }
+                Link { to: Route::About {}, class: "not-found-link", "← Back to home" }
+            }
         }
     }
 }
