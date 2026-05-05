@@ -2,7 +2,7 @@
 #![allow(unused_imports)]
 
 use dioxus::prelude::*;
-use dioxus_logger::tracing::{Level, info, error};
+use dioxus_logger::tracing::{Level, info};
 
 mod integrations;
 mod components;
@@ -12,46 +12,75 @@ static CSS: Asset = asset!("/assets/styles/main.css");
 #[derive(Clone, Routable, Debug, PartialEq)]
 enum Route {
     #[route("/")]
-    Home {},
+    About {},
+    #[route("/repositories")]
+    Repositories {},
+    #[route("/blog")]
+    BlogList {},
+    #[route("/blog/:slug")]
+    BlogPost { slug: String },
+    #[route("/games")]
+    GamesPage {},
 }
 
 fn main() {
-    // Init logger
     dioxus_logger::init(Level::INFO).expect("failed to init logger");
-
-    // Init environment variables
-    // config::environment::init().expect("failed to init environment");
     launch(App);
 }
 
 fn App() -> Element {
     rsx! {
-        Router::<Route> {},
-        document::Stylesheet { href: CSS },
+        document::Stylesheet { href: CSS }
+        Router::<Route> {}
     }
 }
 
 #[component]
-fn Home() -> Element {
+fn About() -> Element {
     rsx! {
-        Main {},
+        components::navbar::NavBar {}
+        div { class: "page-content",
+            components::about::About {}
+        }
     }
 }
 
 #[component]
-pub fn Main() -> Element {
+fn Repositories() -> Element {
     rsx! {
-        main {
-            // I hate using hard-coded values like this!
-            // div { min_width: "330px", max_width: "400px" }
-            components::sidebar::SideBar {}
-            div { class: "main-content",
-                components::projects::Projects {},
-                components::games::Games {},
-                components::blog::Blog {},
-                components::books::Books {},
-            }
-            div {  class: "div-to-align-the-layout" }
+        components::navbar::NavBar {}
+        div { class: "page-content",
+            components::repositories::Repositories {}
+        }
+    }
+}
+
+#[component]
+fn BlogList() -> Element {
+    rsx! {
+        components::navbar::NavBar {}
+        div { class: "page-content",
+            components::blog::BlogList {}
+        }
+    }
+}
+
+#[component]
+fn BlogPost(slug: String) -> Element {
+    rsx! {
+        components::navbar::NavBar {}
+        div { class: "page-content",
+            components::blog::BlogPost { slug }
+        }
+    }
+}
+
+#[component]
+fn GamesPage() -> Element {
+    rsx! {
+        components::navbar::NavBar {}
+        div { class: "page-content",
+            components::games::GamesContent {}
         }
     }
 }

@@ -9,6 +9,7 @@ edition = "2021"
 [dependencies]
 
 dioxus = { version = "0.6.3", features = ["web", "router"] }
+pulldown-cmark = { version = "0.11", default-features = false, features = ["html"] }
 
 # Debug
 tracing = "0.1.40"

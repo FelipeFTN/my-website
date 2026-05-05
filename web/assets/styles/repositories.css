@@ -1,0 +1,133 @@
+.repositories {
+  width: 100%;
+}
+
+.repos-title {
+  color: var(--text);
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+.repos-subtitle {
+  color: var(--subtext0);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.repos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.repo-item {
+  background: var(--mantle);
+  border: 1px solid var(--surface0);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.repo-item:hover {
+  border-color: var(--mauve);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.repo-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--blue);
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.repo-item a {
+  text-decoration: none;
+}
+
+.repo-item a:hover .repo-name {
+  text-decoration: underline;
+}
+
+.repo-desc {
+  color: var(--overlay1);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.repo-tags {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.repo-language,
+.repo-stars,
+.repo-forks {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--subtext1);
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: color 0.2s;
+}
+
+.repo-language:hover,
+.repo-stars:hover,
+.repo-forks:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.repo-language-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--mauve);
+  flex-shrink: 0;
+}
+
+.Rust { background-color: #dea584 !important; }
+.C { background-color: #555555 !important; }
+.CPlusPlus { background-color: #f34b7d !important; }
+.Go { background-color: #00add8 !important; }
+.Assembly { background-color: #6e4c13 !important; }
+.Java { background-color: #b07219 !important; }
+.JavaScript { background-color: #f7df1e !important; }
+.TypeScript { background-color: #2b7489 !important; }
+.Python { background-color: #3572a5 !important; }
+.Ruby { background-color: #701516 !important; }
+.Lua { background-color: #000080 !important; }
+.Shell { background-color: #89e051 !important; }
+.HTML { background-color: #e34c26 !important; }
+.CSS { background-color: #563d7c !important; }
+
+.repo-stars-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.repo-forks-icon {
+  filter: invert(80%);
+  transform: rotate(180deg);
+  width: 12px;
+  height: 12px;
+}
+
+@media (max-width: 768px) {
+  .repos-grid {
+    grid-template-columns: 1fr;
+  }
+}
