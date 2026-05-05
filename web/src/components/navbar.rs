@@ -3,6 +3,10 @@
 use dioxus::prelude::*;
 use crate::Route;
 
+static GITHUB_ICON:    Asset = asset!("/assets/github.svg");
+static INSTAGRAM_ICON: Asset = asset!("/assets/instagram.svg");
+static LINKEDIN_ICON:  Asset = asset!("/assets/linkedin.svg");
+
 #[component]
 pub fn NavBar() -> Element {
     let route: Route = use_route::<Route>();
@@ -57,6 +61,17 @@ pub fn NavBar() -> Element {
                             active_class: "nav-active",
                             "Games"
                         }
+                    }
+                }
+                div { class: "navbar-social",
+                    a { href: "https://github.com/FelipeFTN", target: "_blank", rel: "noopener noreferrer", class: "social-link",
+                        img { src: GITHUB_ICON, alt: "GitHub", class: "social-icon" }
+                    }
+                    a { href: "https://www.instagram.com/felipeftn/", target: "_blank", rel: "noopener noreferrer", class: "social-link",
+                        img { src: INSTAGRAM_ICON, alt: "Instagram", class: "social-icon" }
+                    }
+                    a { href: "https://www.linkedin.com/in/felipeftn/", target: "_blank", rel: "noopener noreferrer", class: "social-link",
+                        img { src: LINKEDIN_ICON, alt: "LinkedIn", class: "social-icon" }
                     }
                 }
             }
