@@ -5,27 +5,41 @@ on:
     branches:
       - master
 
+# Required for Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
-  dioxus-deploy:
+  build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        toolchain: ["stable"]
-        buildMode: ["release"]
 
     steps:
       - uses: actions/checkout@v4
+
       - name: "Checkout Repository"
         run: |
           mv ./web/* ./
           rm -rf ./web
+
+      - name: "Cache Rust dependencies"
+        uses: Swatinem/rust-cache@v2
+        with:
+          cache-on-failure: "true"
+          cache-all-crates: "true"
 
       - name: "Set up Rust"
         shell: bash
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           source $HOME/.cargo/env
-          rustup toolchain install ${{ matrix.toolchain }}
+          rustup toolchain install stable
           rustup target add wasm32-unknown-unknown
 
       - name: "Build Dioxus Project 🎁"
@@ -34,17 +48,26 @@ jobs:
           source $HOME/.cargo/env
           curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
           cargo binstall dioxus-cli -y
-          dx build --${{ matrix.buildMode }}
+          dx build --release
 
-      - name: "Cache Rust dependencies"
-        uses: Swatinem/rust-cache@v2
+      - name: "Upload Pages artifact"
+        uses: actions/upload-pages-artifact@v3
         with:
-          cache-on-failure: "true"
-          cache-all-crates: "true"
+          path: target/dx/my-website/release/web/public
 
-      - name: "Deploy Project 🚀"
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
-        with:
-          branch: github-pages
-          folder: target/dx/my-website/${{ matrix.buildMode }}/web/public
-          clean: true
+  deploy:
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Deploy to GitHub Pages 🚀"
+        id: deployment
+        uses: actions/deploy-pages@v4
