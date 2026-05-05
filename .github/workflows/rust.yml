@@ -26,7 +26,7 @@ jobs:
       - name: "Checkout Repository"
         run: |
           mv ./web/* ./
-          rm -rf ./web
+          rm -rf ./web ./api
 
       - name: "Cache Rust dependencies"
         uses: Swatinem/rust-cache@v2
@@ -47,9 +47,16 @@ jobs:
         run: |
           source $HOME/.cargo/env
           curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
-          cargo binstall dioxus-cli -y
+          cargo binstall dioxus-cli -y --force
           dx build --release
 
+
+      ## Check if assets directory is empty an log error
+      - name: "Move assets to public directory"
+        run: |
+            cp -r ./assets/ target/dx/my-website/release/web/public/assets/
+
+      ## Upload the built assets to be used in the deployment step
       - name: "Upload Pages artifact"
         uses: actions/upload-pages-artifact@v3
         with:
